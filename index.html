@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ATELIER — Elevated Fashion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="marque.css">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -132,12 +133,12 @@ tailwind.config = {
   /* ── Nav ── */
   .nav-line-short { width: 18px; transition: width 0.3s; }
   .nav-burger:hover .nav-line-short { width: 28px; }
-  .cart-badge::after {
+  /* .cart-badge::after {
     content:'3'; position:absolute; top:-8px; right:-8px;
     width:16px; height:16px; background:#c9a96e; color:#000;
     font-size:9px; font-weight:600; border-radius:50%;
     display:flex; align-items:center; justify-content:center; line-height:16px;
-  }
+  } */
   /* Mobile nav */
   #mobileMenu { transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.76,0,0.24,1); }
   #mobileMenu.open { transform: translateX(0); }
@@ -929,7 +930,7 @@ tailwind.config = {
     <div class="product-card cursor-pointer reveal" data-delay="1">
       <div class="relative mb-4" style="aspect-ratio:3/4;overflow:hidden;background:#1e1c18">
         <div class="prod-img-bg absolute inset-0 flex items-center justify-center font-cormorant text-4xl" style="background:linear-gradient(135deg,#2e2620,#1a1410);color:rgba(245,240,232,0.08)">I</div>
-        <span class="absolute top-3 left-3 bg-gold text-dark-bg uppercase font-semibold" style="font-size:0.58rem;letter-spacing:0.1em;padding:0.22rem 0.55rem">Sale</span>
+        <span class="absolute top-3 left-3 bg-gold text-dark-bg uppercase font-semibold" style="font-size:0.58rem;letter-spacing:0.1em;padding:0.22rem 0.55rem">Atelier </span>
         <div class="prod-actions absolute bottom-3 left-3 right-3 flex gap-2">
           <button class="flex-1 bg-gold text-dark-bg uppercase font-medium border-none cursor-pointer hover:bg-yellow-400 transition-colors" style="padding:0.65rem;font-size:0.6rem;letter-spacing:0.12em;font-family:'Outfit',sans-serif">Add to Bag</button>
           <button class="wish-btn w-10 flex items-center justify-center text-gold cursor-pointer transition-all hover:bg-[rgba(201,169,110,0.15)]" style="background:rgba(15,14,12,0.85);border:1px solid rgba(201,169,110,0.3)">♡</button>
@@ -1007,78 +1008,161 @@ tailwind.config = {
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════ NEWSLETTER ═══ -->
-<section class="newsletter-grid grid grid-cols-2 gap-16 items-center px-6 sm:px-10 md:px-16 lg:px-24 py-20 md:py-24" style="background:#f0ebe3">
-  <div class="reveal-left">
-    <div class="section-label text-gold uppercase font-normal mb-3" style="font-size:0.65rem;letter-spacing:0.25em">Stay Connected</div>
-    <div class="font-cormorant font-light text-charcoal mb-4" style="font-size:clamp(2rem,4vw,3.5rem);line-height:1.15">
-      Join the<br><em class="text-gold" style="font-style:italic">Inner Circle</em>
+    <section class="fashion-marquee">
+    <h1 class="title">WEAR THE MOMENT</h1>
+    <p class="subtitle">Style in motion</p>
+
+    <div class="marquee-wrapper">
+
+  <!-- ROW 1 -->
+  <div class="marquee-container">
+    <div class="marquee-track row1">
+      <img src="https://hips.hearstapps.com/hmg-prod/images/older-women-fashion-street-style-influencers-66d5aeded61ff.jpg">
+      <img src="https://nkitidesigns.com/cdn/shop/articles/shedrack-salami-AIi2PcNI0JU-unsplash.jpg?v=1648434672&width=2048">
+      <img src="https://m.media-amazon.com/images/I/61C3dJuLiQL._AC_UF894,1000_QL80_.jpg">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLGBhfOnbr9Jo-afWdD1p1a7xmeOGus4KGqw&s">
+      <img src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/68/7519252/1.jpg?3528">
+      <img src="https://i5.walmartimages.com/asr/b433b693-b5b8-4125-8366-7cb910b85ac7.08846bd58f794e9506bdfef63a55b763.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF">
+      <!-- <img src="https://nolabels.in/cdn/shop/files/DSC08708.jpg?v=1722410927"> -->
+      <img src="https://cdn.shopify.com/s/files/1/0498/9091/8551/files/AW25-November-Nav_Images-Artwork2.png?v=1762797979">
+      <img src="https://assets.ajio.com/medias/sys_master/root/20240822/ZwsE/66c74b711d763220fa90f995/-473Wx593H-469633162-black-MODEL.jpg">
+      <img src="https://coverclap.com/assets/blog/timeless-short-hairstyles-for-black-women/faded-haircut-black-woman.jpg">
     </div>
-    <p class="font-light leading-loose" style="font-size:0.85rem;color:#6b6459">Be first to discover new arrivals, exclusive offers, and editorial content curated for the discerning eye.</p>
   </div>
-  <div class="flex flex-col gap-4 reveal-right">
-    <input type="text" placeholder="Your full name" class="w-full font-light outline-none transition-all duration-300 font-outfit placeholder:opacity-50" style="padding:1.1rem 1.5rem;border:1px solid rgba(107,100,89,0.2);font-size:0.85rem;background:#faf8f4;color:#1a1a1a;font-family:'Outfit',sans-serif">
-    <input type="email" placeholder="Your email address" class="w-full font-light outline-none transition-all duration-300 font-outfit placeholder:opacity-50" style="padding:1.1rem 1.5rem;border:1px solid rgba(107,100,89,0.2);font-size:0.85rem;background:#faf8f4;color:#1a1a1a;font-family:'Outfit',sans-serif">
-    <button class="btn-shimmer self-start inline-flex items-center gap-3 bg-gold text-dark-bg uppercase font-medium border-none cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(201,169,110,0.3)]" style="padding:0.95rem 2.2rem;font-size:0.73rem;letter-spacing:0.15em;font-family:'Outfit',sans-serif">
-      Subscribe Now
-      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </button>
-    <p class="font-light" style="font-size:0.65rem;color:#6b6459;letter-spacing:0.05em">No spam. Unsubscribe anytime. Privacy policy applies.</p>
+  
+  <!-- ROW 2 -->
+  <div class="marquee-container">
+    <div class="marquee-track row2">
+      <img src="https://i.pinimg.com/originals/53/24/7e/53247e749f22b2617921f612f349571f.jpg">
+      <img src="https://i.pinimg.com/474x/45/76/0a/45760aeb231a742e275aae07f6a53982.jpg">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKWFimu3s3Ct69yjVdznOtSt6mWEm6Q-_ugQ&s">
+      <img src="https://markmorphy.com/cdn/shop/files/rn-image_picker_lib_temp_9ca97105-1b3f-4cef-a875-85611b9afbca.jpg?v=1742846371">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi-ZdtQmWPqdXQ0q1jySG-q3We-1iZw2b1mQ&s">
+      <!-- <img src="https://skmei.in/cdn/shop/files/home-page-mens.png?v=1747482011"> -->
+      <img src="https://m.media-amazon.com/images/I/71MKb9+MZ6L._AC_SR175,263_QL70_.jpg">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ-limRLJVYviHkmqb541z5hC9RGwwSTlHHQ&s">
+      <img src="https://cdn.rehmie.com.ng/1e4071bd9c1dc29bcf1f16d2adb993bc.jpg">
+      <img src="https://ciska.com.ng/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-28-at-09.12.54_592d7b2d.jpg">
+    </div>
   </div>
+
+  <!-- ROW 3 -->
+  <div class="marquee-container">
+    <div class="marquee-track row1">
+      <img src="https://sneakernews.com/wp-content/uploads/2024/09/air-jordan-1-mid-white-legend-blue-fz2142-114-1.jpg">
+      <img src="https://t3.ftcdn.net/jpg/04/04/14/26/360_F_404142602_Y2wuSHD5janWigIQiLDF3LcRW6ZTMD6k.jpg">
+      <img src="https://i.pinimg.com/236x/64/e0/da/64e0daa7e97a710e073df8489afd50fc.jpg">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxwu4cq1CyU1VObJlWUEnJUztoA3j7VdRxkQ&s">
+      <img src="https://img.freepik.com/free-photo/still-life-with-classic-shirts-hanger_23-2150828575.jpg">
+      <img src="https://i.pinimg.com/736x/c9/a7/d2/c9a7d20155a2de59bfae53921cbc0f3f.jpg">
+      <img src="https://i.etsystatic.com/48702114/r/il/4dbdac/6086275428/il_570xN.6086275428_mvrh.jpg">
+      <img src="https://www.fizzygoblet.com/cdn/shop/products/bluetotedomestic.jpg?v=1767107294&width=600">
+      <img src="https://assets.myntassets.com/dpr_1.5,q_30,w_400,c_limit,fl_progressive/assets/images/2025/NOVEMBER/26/FplRDbl9_99fadd2b2b914f37b608745153ebe136.jpg">
+      <img src="https://ciska.com.ng/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-28-at-09.12.54_592d7b2d.jpg">
+    </div>
+  </div>
+
+  <!-- ROW 4 -->
+  <div class="marquee-container">
+    <div class="marquee-track row2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrS86130OdSZum-st7fQ7AxCiXJ0QIVYnd4w&s">
+      <img src="https://pawnjewelry.com/wp-content/uploads/2025/10/DSC7056.jpg">
+      <img src="https://images.meesho.com/images/products/527697266/lgho6_512.webp?width=512">
+      <img src="https://img.freepik.com/premium-photo/sexy-man-cover-face-close-up-portrait-guy-with-serious-profile-face-guy-covered-face-with-hands-doing-stop-gesture-with-sad-fear-expression_265223-26039.jpg?semt=ais_rp_progressive&w=740&q=80">
+      <img src="https://images.unsplash.com/photo-1532039956299-1614b86a6d2f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+      <img src="https://www.shutterstock.com/image-photo/colorful-womens-clothes-on-hangers-260nw-2582383327.jpg">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrZNcW1UhdfY5R0Llge8uPviWNdXpuCKPcA&s">
+      <img src="https://cdn.shopify.com/s/files/1/0631/8535/4990/files/meteorite-rings.jpg?v=1652867394">
+      <img src="https://assets.myntassets.com/dpr_1.5,q_30,w_400,c_limit,fl_progressive/assets/images/2025/NOVEMBER/26/FplRDbl9_99fadd2b2b914f37b608745153ebe136.jpg">
+      <img src="https://www.ootbjewelry.com/wp-content/uploads/2025/08/how-many-rings-should-a-woman-wear.webp">
+    </div>
+  </div>
+
+</div>
 </section>
 
+<!-- Banner -->
+ <div class="ticker">
+  <div class="ticker-track">
+
+    <span><i class="fas fa-star"></i> OWN THE ROOM</span>
+    <span><i class="fas fa-star "></i> DESIGNED TO BE REMEMBERED</span>
+
+    <!-- duplicate content -->
+    <span><i class="fas fa-star"></i> OWN THE ROOM</span>
+    <span><i class="fas fa-star"></i> DESIGNED TO BE REMEMBERED</span>
+
+    <!-- duplicate content -->
+    <span><i class="fas fa-star"></i> OWN THE ROOM</span>
+    <span><i class="fas fa-star"></i> DESIGNED TO BE REMEMBERED</span>
+
+    <!-- duplicate content -->
+    <span><i class="fas fa-star"></i> OWN THE ROOM</span>
+    <span><i class="fas fa-star"></i> DESIGNED TO BE REMEMBERED</span>
+
+  </div>
+</div>
 <!-- ═══════════════════════════════════════════ FOOTER ═══ -->
-<footer class="px-6 sm:px-10 md:px-16 lg:px-24 pt-16 md:pt-20 pb-10" style="background:#0f0e0c;border-top:1px solid rgba(201,169,110,0.1)">
-  <div class="footer-grid grid gap-12 mb-14" style="grid-template-columns:2fr 1fr 1fr 1fr">
-    <div class="reveal">
-      <span class="block font-cormorant font-light text-cream mb-5 uppercase" style="font-size:clamp(1.5rem,3vw,2rem);letter-spacing:0.3em">ATELIER</span>
-      <p class="font-light leading-loose" style="font-size:0.8rem;color:rgba(245,240,232,0.35);max-width:260px">A curated destination for elevated fashion, where artistry and craftsmanship converge in every piece.</p>
-      <div class="flex gap-3 mt-7">
-        <a href="#" class="w-9 h-9 flex items-center justify-center no-underline transition-all duration-300 hover:border-gold hover:text-gold glow-border" style="border:1px solid rgba(201,169,110,0.2);color:rgba(245,240,232,0.4);font-size:0.72rem">IG</a>
-        <a href="#" class="w-9 h-9 flex items-center justify-center no-underline transition-all duration-300 hover:border-gold hover:text-gold glow-border" style="border:1px solid rgba(201,169,110,0.2);color:rgba(245,240,232,0.4);font-size:0.72rem">TW</a>
-        <a href="#" class="w-9 h-9 flex items-center justify-center no-underline transition-all duration-300 hover:border-gold hover:text-gold glow-border" style="border:1px solid rgba(201,169,110,0.2);color:rgba(245,240,232,0.4);font-size:0.72rem">FB</a>
-        <a href="#" class="w-9 h-9 flex items-center justify-center no-underline transition-all duration-300 hover:border-gold hover:text-gold glow-border" style="border:1px solid rgba(201,169,110,0.2);color:rgba(245,240,232,0.4);font-size:0.72rem">PT</a>
-      </div>
+
+<footer class="footer">
+
+<div class="footer-container">
+    <div class="footer-col">
+        <h3>ATELIER</h3>
+        <p class="foot-p">Redefining luxury fashion with timeless elegance and contemporary design.</p>
     </div>
-    <div class="reveal" data-delay="1">
-      <h4 class="text-gold uppercase font-normal mb-5" style="font-size:0.65rem;letter-spacing:0.22em">Shop</h4>
-      <ul class="flex flex-col gap-3 list-none">
-        <li><a href="#" class="no-underline font-light transition-colors duration-200 hover:text-gold hover:translate-x-1 inline-block transition-transform" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">New Arrivals</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Women</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Men</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Accessories</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Sale</a></li>
-      </ul>
+
+    <div class="footer-col">
+        <h3>SHOP</h3>
+        <ul class="foot-ul">
+            <li>Women</li>
+            <li>Men</li>
+            <li>Accessories</li>
+            <li>New Arrivals</li>
+        </ul>
     </div>
-    <div class="reveal" data-delay="2">
-      <h4 class="text-gold uppercase font-normal mb-5" style="font-size:0.65rem;letter-spacing:0.22em">Company</h4>
-      <ul class="flex flex-col gap-3 list-none">
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">About Us</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Sustainability</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Careers</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Press</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Stockists</a></li>
-      </ul>
+
+    <div class="footer-col">
+        <h3>CUSTOMER SERVICE</h3>
+        <ul>
+            <li>Contact Us</li>
+            <li>About Us</li>
+            <li>Shipping & Returns</li>
+            <li>Size Guide</li>
+            <li>FAQs</li>
+        </ul>
     </div>
-    <div class="reveal" data-delay="3">
-      <h4 class="text-gold uppercase font-normal mb-5" style="font-size:0.65rem;letter-spacing:0.22em">Help</h4>
-      <ul class="flex flex-col gap-3 list-none">
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Shipping Info</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Returns</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Size Guide</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">Contact Us</a></li>
-        <li><a href="#" class="no-underline font-light transition-all duration-200 hover:text-gold hover:translate-x-1 inline-block" style="font-size:0.78rem;color:rgba(245,240,232,0.4)">FAQs</a></li>
-      </ul>
+
+    <div class="base">
+    <div class="footer-col">
+        <h3>NEWSLETTER</h3>
+        <p class="newsletter-p">Subscribe to receive exclusive offers and updates</p>
+
+        <div class="newsletter">
+            <input type="email" placeholder="Email address">
+            <button class="btn">JOIN</button>
+        </div>
     </div>
-  </div>
-  <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-8" style="border-top:1px solid rgba(201,169,110,0.1)">
-    <p class="font-light text-center sm:text-left" style="font-size:0.68rem;color:rgba(245,240,232,0.25);letter-spacing:0.05em">© 2026 Atelier. All rights reserved.</p>
-    <p class="font-light" style="font-size:0.68rem;color:rgba(245,240,232,0.25)">
-      <a href="#" class="text-gold no-underline hover:opacity-80 transition-opacity">Privacy Policy</a>
-      &nbsp;·&nbsp;
-      <a href="#" class="text-gold no-underline hover:opacity-80 transition-opacity">Terms of Service</a>
-    </p>
-  </div>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+    </div>
+    </div>
+</div>
+
+<div class="border"></div>
+
+<div class="footer-bottom">
+    <p class="bottom-p">© 2026 XENITH Agency. All rights reserved.</p>
+    <div class="foot-link">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms Of Services</a>
+        <a href="#">Cookie Policy</a>
+    </div>
+</div>
 </footer>
 
 <!-- Scroll to top -->
