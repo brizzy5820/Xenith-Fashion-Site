@@ -730,7 +730,7 @@ tailwind.config = {
               <!-- Label -->
               <div class="relative z-10 text-center w-full px-4" style="padding-bottom:10px">
                 <div class="font-cormorant text-cream font-light" style="font-size:1.1rem;letter-spacing:0.12em;text-shadow:0 1px 8px rgba(0,0,0,0.6)">Oversized Trench</div>
-                <div class="text-gold mt-1" style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase">Unisex · SS 2026 · $480</div>
+                <div class="text-gold mt-1" style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase">Unisex · SS 2026 </div>
               </div>
               <!-- Slide number watermark -->
               <div class="absolute top-5 left-5 font-cormorant font-light" style="font-size:2.5rem;color:rgba(201,169,110,0.15);line-height:1">01</div>
@@ -739,7 +739,7 @@ tailwind.config = {
             <!-- ══ OUTFIT 2 — Minimal Suit ══ -->
             <div class="outfit-slide enter">
               <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop&crop=faces,top"
+                <img src="https://images.unsplash.com/photo-1613915617430-8ab0fd7c6baf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzaGlvbiUyMG1vZGVsfGVufDB8fDB8fHww"
                   alt="Minimal Suit" class="w-full h-full object-cover object-top"
                   style="filter:brightness(0.72) contrast(1.08) saturate(0.9)">
                 <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,8,6,0.9) 0%,rgba(10,8,6,0.2) 45%,rgba(10,8,6,0.04) 70%)"></div>
@@ -747,7 +747,7 @@ tailwind.config = {
               </div>
               <div class="relative z-10 text-center w-full px-4" style="padding-bottom:10px">
                 <div class="font-cormorant text-cream font-light" style="font-size:1.1rem;letter-spacing:0.12em;text-shadow:0 1px 8px rgba(0,0,0,0.6)">Minimal Suit</div>
-                <div class="text-gold mt-1" style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase">Unisex · Resort · $620</div>
+                <div class="text-gold mt-1" style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase">Unisex · Resort </div>
               </div>
               <div class="absolute top-5 left-5 font-cormorant font-light" style="font-size:2.5rem;color:rgba(201,169,110,0.15);line-height:1">02</div>
             </div>
@@ -755,15 +755,15 @@ tailwind.config = {
             <!-- ══ OUTFIT 3 — Fluid Wrap ══ -->
             <div class="outfit-slide enter">
               <div class="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&q=80&fit=crop&crop=faces,center"
+                <img src="https://images.unsplash.com/photo-1633529685746-a180a69f1ab4?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Fluid Wrap" class="w-full h-full object-cover object-center"
                   style="filter:brightness(0.75) contrast(1.06)">
                 <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,8,6,0.88) 0%,rgba(10,8,6,0.22) 45%,rgba(10,8,6,0.04) 70%)"></div>
                 <div class="absolute inset-0" style="background:radial-gradient(ellipse 70% 55% at 50% 0%,rgba(45,90,61,0.07),transparent 60%)"></div>
               </div>
               <div class="relative z-10 text-center w-full px-4" style="padding-bottom:10px">
-                <div class="font-cormorant text-cream font-light" style="font-size:1.1rem;letter-spacing:0.12em;text-shadow:0 1px 8px rgba(0,0,0,0.6)">Fluid Wrap Dress</div>
-                <div class="text-gold mt-1" style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase">New Arrival · $289</div>
+                <div class="font-cormorant text-cream font-light" style="font-size:1.1rem;letter-spacing:0.12em;text-shadow:0 1px 8px rgba(0,0,0,0.6)">Matched Outfit</div>
+                <div class="text-gold mt-1" style="font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase">New Arrival </div>
               </div>
               <div class="absolute top-5 left-5 font-cormorant font-light" style="font-size:2.5rem;color:rgba(201,169,110,0.15);line-height:1">03</div>
             </div>
@@ -1247,7 +1247,7 @@ function openWardrobe() {
     if (!sliderStarted) {
       sliderStarted = true;
       startProgress();
-      sliderTimer = setTimeout(() => goToSlide(1), DURATION);
+       sliderTimer = setTimeout(() => changeOutfitSlide(1), DURATION);
     }
   }, 1900);
 }
@@ -1299,11 +1299,11 @@ function spawnMotes() {
 // OUTFIT SLIDER
 // ══════════════════════════════════════════════════════════
 const outfitData = [
-  { price:'$480', name:'Oversized Trench' },
-  { price:'$620', name:'Minimal Suit' },
-  { price:'$289', name:'Fluid Wrap Dress' },
-  { price:'$590', name:'Cashmere Coat' },
-  { price:'$320', name:'Linen Co-ord' },
+  { price:'', name:'Oversized Trench' },
+  { price:'', name:'Minimal Suit' },
+  { price:'', name:'Fluid Wrap Dress' },
+  { price:'', name:'Cashmere Coat' },
+  { price:'', name:'Linen Co-ord' },
 ];
 const slides    = document.querySelectorAll('.outfit-slide');
 const dots      = document.querySelectorAll('.outfit-dot');
@@ -1322,7 +1322,7 @@ function startProgress() {
   },80);
 }
 
-function goToSlide(next, manual=false) {
+function changeOutfitSlide(next, manual=false) {
   if(next===current) return;
   clearTimeout(sliderTimer); clearInterval(progTimer);
   slides[current].classList.replace('active','exit');
@@ -1344,16 +1344,16 @@ function goToSlide(next, manual=false) {
   setTimeout(()=>{ slides[prev].classList.remove('exit'); slides[prev].classList.add('enter'); },1100);
   current=next;
   startProgress();
-  sliderTimer=setTimeout(()=>goToSlide((current+1)%slides.length),DURATION);
+  sliderTimer=setTimeout(()=>changeOutfitSlide((current+1)%slides.length),DURATION);
 }
-window.goToSlide=(n)=>goToSlide(n,true);
+// window.goToSlide=(n)=>goToSlide(n,true);
 
 // Touch swipe on wardrobe
 let tsY=0;
 wardrobeEl.addEventListener('touchstart',e=>{ tsY=e.touches[0].clientY; },{passive:true});
 wardrobeEl.addEventListener('touchend',e=>{
   const dy=tsY-e.changedTouches[0].clientY;
-  if(Math.abs(dy)>40) goToSlide(dy>0?(current+1)%slides.length:(current-1+slides.length)%slides.length,true);
+  if(Math.abs(dy)>40) changeOutfitSlide(dy>0?(current+1)%slides.length:(current-1+slides.length)%slides.length,true);
 });
 
 // ══ REVEAL ANIMATIONS ═════════════════════════
