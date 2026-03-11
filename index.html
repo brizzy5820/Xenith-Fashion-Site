@@ -661,7 +661,7 @@ tailwind.config = {
 
       <!-- CTA -->
       <div class="hero-cta flex flex-wrap items-center gap-4">
-        <a href="#" class="btn-shimmer btn-magnetic inline-flex items-center gap-3 bg-gold text-dark-bg uppercase font-medium no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(201,169,110,0.35)]"
+        <a href="#cat" class="btn-shimmer btn-magnetic inline-flex items-center gap-3 bg-gold text-dark-bg uppercase font-medium no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(201,169,110,0.35)]"
           style="padding:0.95rem 2.2rem;font-size:0.73rem;letter-spacing:0.15em">
           Discover More
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -864,55 +864,55 @@ tailwind.config = {
 </section>
 
 <!-- ═══════════════════════════════════════════ CATEGORIES ═══ -->
-<section class="py-20 md:py-28 px-6 sm:px-10 md:px-16 lg:px-24">
+<section class="py-20 md:py-28 px-6 sm:px-10 md:px-16 lg:px-24" id="cat">
   <div class="section-label reveal text-gold uppercase font-normal mb-3" style="font-size:0.65rem;letter-spacing:0.25em">Collections</div>
   <div class="reveal font-cormorant font-light text-charcoal mb-10 md:mb-14" style="font-size:clamp(2rem,4vw,3.5rem);line-height:1.15;letter-spacing:-0.01em">
     Shop by <em class="text-gold" style="font-style:italic">Category</em>
   </div>
-  <div class="flex  width-fit align-center mb-12 reveal gap-4" style="font-size:0.9rem;letter-spacing:0.1em">
-    <a class="bg-gold text-charcoal hover:bg-gold-hover p-2.5 rounded  focus:bg-gold-focus active:bg-gold-active"> Men</a>
-    <a class="bg-gold text-charcoal hover:bg-gold-hover p-2.5 rounded   focus:bg-gold-focus active:bg-gold-active">Women</a>
+    <div class="flex width-fit align-center mb-12 reveal gap-4" style="font-size:0.9rem;letter-spacing:0.1em">
+    <button id="catMenBtn" type="button" data-gender="men" class="category-toggle-btn bg-gold text-charcoal hover:bg-gold-hover p-2.5 rounded focus:bg-gold-focus active:bg-gold-active">Men</button>
+    <button id="catWomenBtn" type="button" data-gender="women" class="category-toggle-btn text-cream p-2.5 rounded" style="background:#1f1b17;border:1px solid rgba(201,169,110,0.35)">Women</button>
   </div>
   <div class="cat-grid grid gap-4" style="grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto">
-    <div class="cat-card cat-big relative overflow-hidden cursor-pointer reveal reveal-left" style="grid-row:1/3;height:560px" data-delay="1">
-      <div class="cat-bg absolute inset-0" style="background:linear-gradient(160deg,#2a231a,#1a1510)">
-        <span class="absolute right-4 top-4 font-cormorant font-light pointer-events-none select-none" style="font-size:5rem;opacity:0.06;color:#f5f0e8;line-height:1">W</span>
+  <div class="cat-card cat-big relative overflow-hidden cursor-pointer reveal reveal-left" style="grid-row:1/3;height:560px" data-delay="1" data-category-card="0">
+      <div class="cat-bg category-image-bg absolute inset-0" style="background-position:center;background-size:cover;background-repeat:no-repeat">
+        <span data-category-mark class="absolute right-4 top-4 font-cormorant font-light pointer-events-none select-none" style="font-size:5rem;opacity:0.12;color:#f5f0e8;line-height:1">M</span>
       </div>
       <div class="cat-overlay absolute inset-0 flex flex-col justify-end p-6 md:p-8" style="background:linear-gradient(to top,rgba(10,8,6,0.82),transparent 52%)">
-        <span class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Featured</span>
-        <div class="font-cormorant font-light text-cream" style="font-size:clamp(1.4rem,2.5vw,1.8rem);line-height:1.1">Ready To Wear</div>
+       <span data-category-tag class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Featured</span>
+        <div data-category-name class="font-cormorant font-light text-cream" style="font-size:clamp(1.4rem,2.5vw,1.8rem);line-height:1.1">Ready To Wear</div>
         <div class="cat-arrow mt-3 w-9 h-9 rounded-full flex items-center justify-center text-cream" style="border:1px solid rgba(245,240,232,0.3);font-size:1rem">→</div>
       </div>
     </div>
-    <div class="cat-card cat-small relative overflow-hidden cursor-pointer reveal" style="height:268px" data-delay="2">
-      <div class="cat-bg absolute inset-0" style="background:linear-gradient(160deg,#e8d5b7,#d4b896)"></div>
+    <div class="cat-card cat-small relative overflow-hidden cursor-pointer reveal" style="height:268px" data-delay="2" data-category-card="1">
+      <div class="cat-bg category-image-bg absolute inset-0" style="background-position:center;background-size:cover;background-repeat:no-repeat"></div>
       <div class="cat-overlay absolute inset-0 flex flex-col justify-end p-5 md:p-6" style="background:linear-gradient(to top,rgba(10,8,6,0.78),transparent 60%)">
-        <span class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Essentials</span>
-        <div class="font-cormorant font-light text-cream" style="font-size:1.3rem;line-height:1.1">Bags</div>
+<span data-category-tag class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Essentials</span>
+        <div data-category-name class="font-cormorant font-light text-cream" style="font-size:1.3rem;line-height:1.1">Accessories</div>
         <div class="cat-arrow mt-2 w-8 h-8 rounded-full flex items-center justify-center text-cream" style="border:1px solid rgba(245,240,232,0.3)">→</div>
       </div>
     </div>
-    <div class="cat-card cat-small relative overflow-hidden cursor-pointer reveal" style="height:268px" data-delay="3">
-      <div class="cat-bg absolute inset-0" style="background:linear-gradient(160deg,#1e2a24,#141c18)"></div>
+  <div class="cat-card cat-small relative overflow-hidden cursor-pointer reveal" style="height:268px" data-delay="3" data-category-card="2">
+      <div class="cat-bg category-image-bg absolute inset-0" style="background-position:center;background-size:cover;background-repeat:no-repeat"></div>
+      <div class="cat-overlay absolute inset-0 flex flex-col justify-end p-5 md:p-6" style="background:linear-gradient(to top,rgba(10,8,6,0.76),transparent 58%)">
+        <span data-category-tag class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Luxury</span>
+        <div data-category-name class="font-cormorant font-light text-cream" style="font-size:1.3rem;line-height:1.1">Outerwear</div>
+        <div class="cat-arrow mt-2 w-8 h-8 rounded-full flex items-center justify-center text-cream" style="border:1px solid rgba(245,240,232,0.3)">→</div>
+      </div>
+    </div>
+<div class="cat-card cat-small relative overflow-hidden cursor-pointer reveal" style="height:268px" data-delay="4" data-category-card="3">
+      <div class="cat-bg category-image-bg absolute inset-0" style="background-position:center;background-size:cover;background-repeat:no-repeat"></div>
       <div class="cat-overlay absolute inset-0 flex flex-col justify-end p-5 md:p-6" style="background:linear-gradient(to top,rgba(10,8,6,0.82),transparent 50%)">
-        <span class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Luxury</span>
-        <div class="font-cormorant font-light text-cream" style="font-size:1.3rem;line-height:1.1">Accessories</div>
+          <span data-category-tag class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Limited</span>
+        <div data-category-name class="font-cormorant font-light text-cream" style="font-size:1.3rem;line-height:1.1">Shoes</div>
         <div class="cat-arrow mt-2 w-8 h-8 rounded-full flex items-center justify-center text-cream" style="border:1px solid rgba(245,240,232,0.3)">→</div>
       </div>
     </div>
-    <div class="cat-card cat-small relative overflow-hidden cursor-pointer reveal" style="height:268px" data-delay="4">
-      <div class="cat-bg absolute inset-0" style="background:linear-gradient(160deg,#2d2420,#1e1a16)"></div>
-      <div class="cat-overlay absolute inset-0 flex flex-col justify-end p-5 md:p-6" style="background:linear-gradient(to top,rgba(10,8,6,0.82),transparent 50%)">
-        <span class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Limited</span>
-        <div class="font-cormorant font-light text-cream" style="font-size:1.3rem;line-height:1.1">Outerwear</div>
-        <div class="cat-arrow mt-2 w-8 h-8 rounded-full flex items-center justify-center text-cream" style="border:1px solid rgba(245,240,232,0.3)">→</div>
-      </div>
-    </div>
-    <div class="cat-card cat-small relative overflow-hidden cursor-pointer reveal" style="height:268px" data-delay="5">
-      <div class="cat-bg absolute inset-0" style="background:linear-gradient(160deg,#e0d5c8,#c8b89a)"></div>
+   <div class="cat-card cat-small relative overflow-hidden cursor-pointer reveal" style="height:268px" data-delay="5" data-category-card="4">
+      <div class="cat-bg category-image-bg absolute inset-0" style="background-position:center;background-size:cover;background-repeat:no-repeat"></div>
       <div class="cat-overlay absolute inset-0 flex flex-col justify-end p-5 md:p-6" style="background:linear-gradient(to top,rgba(10,8,6,0.72),transparent 60%)">
-        <span class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Trend</span>
-        <div class="font-cormorant font-light text-cream" style="font-size:1.3rem;line-height:1.1">Footwear</div>
+        <span data-category-tag class="text-gold uppercase font-normal mb-1" style="font-size:0.6rem;letter-spacing:0.2em">Trend</span>
+        <div data-category-name class="font-cormorant font-light text-cream" style="font-size:1.3rem;line-height:1.1">Bags</div>
         <div class="cat-arrow mt-2 w-8 h-8 rounded-full flex items-center justify-center text-cream" style="border:1px solid rgba(245,240,232,0.3)">→</div>
       </div>
     </div>
@@ -1203,6 +1203,64 @@ menuBtn.addEventListener('click',()=>{
   document.body.style.overflow=open?'hidden':'';
 });
 
+// ══ CATEGORY TOGGLE (MEN/WOMEN) ═════════════════════════
+const categoryData = {
+  men: [
+    { tag: 'Featured', name: 'Ready To Wear', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80' },
+    { tag: 'Essentials', name: 'Outwear', image: 'https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?auto=format&fit=crop&w=900&q=80' },
+    { tag: 'Luxury', name: 'Accessories', image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80' },
+    { tag: 'Limited', name: 'Footwear', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80' },
+    { tag: 'Classic', name: 'Bags', image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=900&q=80' },
+  ],
+  women: [
+    { tag: 'Featured', name: 'Ready To Wear', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80' },
+    { tag: 'Essentials', name: 'Handbags', image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80' },
+    { tag: 'Luxury', name: 'Accessories', image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80' },
+    { tag: 'Limited', name: 'Outerwear', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80' },
+    { tag: 'Trend', name: 'Footwear', image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=80' },
+  ]
+};
+
+const categoryButtons = document.querySelectorAll('.category-toggle-btn');
+const categoryCards = document.querySelectorAll('[data-category-card]');
+const categoryMark = document.querySelector('[data-category-mark]');
+
+function setCategory(gender) {
+  const selected = categoryData[gender];
+  if (!selected) return;
+
+  categoryCards.forEach((card, idx) => {
+    const item = selected[idx];
+    if (!item) return;
+
+    const bg = card.querySelector('.category-image-bg');
+    const tag = card.querySelector('[data-category-tag]');
+    const name = card.querySelector('[data-category-name]');
+
+    if (bg) {
+      bg.style.backgroundImage = `linear-gradient(160deg, rgba(22,17,12,0.35), rgba(12,10,8,0.75)), url('${item.image}')`;
+    }
+    if (tag) tag.textContent = item.tag;
+    if (name) name.textContent = item.name;
+  });
+
+  if (categoryMark) categoryMark.textContent = gender === 'men' ? 'M' : 'W';
+
+  categoryButtons.forEach((button) => {
+    const isActive = button.dataset.gender === gender;
+    button.classList.toggle('bg-gold', isActive);
+    button.classList.toggle('text-charcoal', isActive);
+    button.classList.toggle('text-cream', !isActive);
+    button.style.background = isActive ? '' : '#1f1b17';
+    button.style.border = isActive ? 'none' : '1px solid rgba(201,169,110,0.35)';
+  });
+}
+
+categoryButtons.forEach((button) => {
+  button.addEventListener('click', () => setCategory(button.dataset.gender));
+});
+
+setCategory('men');
 // ══ NAV SCROLL ══════════════════════════════════════════
 const mainNav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{
