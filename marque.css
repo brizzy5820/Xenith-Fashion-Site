@@ -32,7 +32,7 @@ margin-bottom:40px;
 
 .marquee-track{
   display:flex;
-  gap:8px;
+  gap:2px;
 }
 
 .marquee-track img{
