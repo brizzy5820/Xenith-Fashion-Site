@@ -177,13 +177,24 @@ tailwind.config = {
   }
 
   /* ── Cat card ── */
-  .cat-card .cat-bg  { transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+ .cat-card { transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease; }
+  .cat-card .cat-bg  { transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.35s ease; }
   .cat-card:hover .cat-bg { transform: scale(1.06); }
   .cat-card .cat-arrow { transform: translateY(10px); opacity: 0; transition: all 0.35s ease; }
   .cat-card:hover .cat-arrow { opacity: 1; transform: translateY(0); }
-  .cat-card .cat-overlay { transition: background 0.4s ease; }
+  .cat-card .cat-overlay { transition: background 0.4s ease, opacity 0.3s ease; }
   .cat-card:hover .cat-overlay { background: linear-gradient(to top, rgba(10,8,6,0.93) 0%, rgba(10,8,6,0.15) 65%) !important; }
 
+  .cat-card.category-switch-out { opacity: 0.4; transform: translateY(10px) scale(0.985); filter: saturate(0.8); }
+  .cat-card.category-switch-in { opacity: 0; transform: translateY(12px) scale(0.985); }
+  .cat-card.category-switch-in.category-switch-in-active { opacity: 1; transform: translateY(0) scale(1); }
+
+  .category-toggle-btn { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.25s ease, opacity 0.25s ease; }
+  .category-toggle-btn:hover { transform: translateY(-1px); }
+  .category-toggle-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+  .cat-grid { transition: opacity 0.35s ease, transform 0.35s ease; }
+  .cat-grid.cat-grid-switching { opacity: 0.82; transform: translateY(4px); }
   /* ── Product card ── */
   .product-card .prod-actions { transform: translateY(12px); opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
   .product-card:hover .prod-actions { opacity: 1; transform: translateY(0); }
@@ -1010,11 +1021,10 @@ tailwind.config = {
     </a>
   </div>
 </div>
-
+<!-- ═══════════════════════════════════════════ MARQUEE 1═══ -->
     <section class="fashion-marquee">
-    <h1 class="title" style="font-family: Outfit', sans-serif;">WEAR THE MOMENT</h1>
+    <h1 class="title">WEAR THE MOMENT</h1>
     <p class="subtitle">Style in motion</p>
-
     <div class="marquee-wrapper">
 
   <!-- ROW 1 -->
@@ -1041,7 +1051,6 @@ tailwind.config = {
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKWFimu3s3Ct69yjVdznOtSt6mWEm6Q-_ugQ&s">
       <img src="https://markmorphy.com/cdn/shop/files/rn-image_picker_lib_temp_9ca97105-1b3f-4cef-a875-85611b9afbca.jpg?v=1742846371">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi-ZdtQmWPqdXQ0q1jySG-q3We-1iZw2b1mQ&s">
-      <!-- <img src="https://skmei.in/cdn/shop/files/home-page-mens.png?v=1747482011"> -->
       <img src="https://m.media-amazon.com/images/I/71MKb9+MZ6L._AC_SR175,263_QL70_.jpg">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ-limRLJVYviHkmqb541z5hC9RGwwSTlHHQ&s">
       <img src="https://cdn.rehmie.com.ng/1e4071bd9c1dc29bcf1f16d2adb993bc.jpg">
@@ -1064,45 +1073,22 @@ tailwind.config = {
       <img src="https://ciska.com.ng/wp-content/uploads/2025/01/WhatsApp-Image-2025-01-28-at-09.12.54_592d7b2d.jpg">
     </div>
   </div>
-
-  <!-- ROW 4 -->
-  <!-- <div class="marquee-container">
-    <div class="marquee-track row2">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrS86130OdSZum-st7fQ7AxCiXJ0QIVYnd4w&s">
-      <img src="https://pawnjewelry.com/wp-content/uploads/2025/10/DSC7056.jpg">
-      <img src="https://images.meesho.com/images/products/527697266/lgho6_512.webp?width=512">
-      <img src="https://img.freepik.com/premium-photo/sexy-man-cover-face-close-up-portrait-guy-with-serious-profile-face-guy-covered-face-with-hands-doing-stop-gesture-with-sad-fear-expression_265223-26039.jpg?semt=ais_rp_progressive&w=740&q=80">
-      <img src="https://images.unsplash.com/photo-1532039956299-1614b86a6d2f?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
-      <img src="https://www.shutterstock.com/image-photo/colorful-womens-clothes-on-hangers-260nw-2582383327.jpg">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOrZNcW1UhdfY5R0Llge8uPviWNdXpuCKPcA&s">
-      <img src="https://cdn.shopify.com/s/files/1/0631/8535/4990/files/meteorite-rings.jpg?v=1652867394">
-      <img src="https://assets.myntassets.com/dpr_1.5,q_30,w_400,c_limit,fl_progressive/assets/images/2025/NOVEMBER/26/FplRDbl9_99fadd2b2b914f37b608745153ebe136.jpg">
-      <img src="https://www.ootbjewelry.com/wp-content/uploads/2025/08/how-many-rings-should-a-woman-wear.webp">
-    </div>
-  </div> -->
-
 </div>
 </section>
 
-<!-- Banner -->
- <div class="ticker">
-  <div class="ticker-track">
-
-    <span><i class="fas fa-star"></i> OWN THE ROOM</span>
-    <span><i class="fas fa-star "></i> DESIGNED TO BE REMEMBERED</span>
-
-    <!-- duplicate content -->
-    <span><i class="fas fa-star"></i> OWN THE ROOM</span>
-    <span><i class="fas fa-star"></i> DESIGNED TO BE REMEMBERED</span>
-
-    <!-- duplicate content -->
-    <span><i class="fas fa-star"></i> OWN THE ROOM</span>
-    <span><i class="fas fa-star"></i> DESIGNED TO BE REMEMBERED</span>
-
-    <!-- duplicate content -->
-    <span><i class="fas fa-star"></i> OWN THE ROOM</span>
-    <span><i class="fas fa-star"></i> DESIGNED TO BE REMEMBERED</span>
-
+<!-- ═══════════════════════════════════════════ MARQUEE 2 ═══ -->
+<div class="overflow-hidden py-4 flex relative" style="background:#c9a96e">
+  <div class="flex gap-12 items-center whitespace-nowrap animate-marquee" style="will-change:transform;min-width:200%">
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Own the room </span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Designed To B Remembered</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Festive Sale 30% Off</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Exclusive Designs</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Premium Quality</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">New Collection</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Free Shipping Worldwide</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Festive Sale 30% Off</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Exclusive Designs</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
+    <span class="font-cormorant font-light uppercase text-dark-bg" style="font-size:1.05rem;letter-spacing:0.2em">Premium Quality</span><span class="text-dark-bg opacity-30 text-xs mx-3">◆</span>
   </div>
 </div>
 <!-- ═══════════════════════════════════════════ FOOTER ═══ -->
@@ -1178,287 +1164,6 @@ tailwind.config = {
   <div class="scroll-indicator w-px h-14" style="background:linear-gradient(to bottom,#c9a96e,transparent)"></div>
   <span class="font-light" style="writing-mode:vertical-rl;font-size:0.52rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.3)">Scroll</span>
 </div>
-
-<script>
-// ══ CURSOR ══════════════════════════════════════════════
-const cursor = document.getElementById('cursor');
-const ring   = document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => {
-  mx=e.clientX; my=e.clientY;
-  cursor.style.left=mx-5+'px'; cursor.style.top=my-5+'px';
-});
-(function tick(){ rx+=(mx-rx-18)*0.12; ry+=(my-ry-18)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(tick); })();
-document.querySelectorAll('a,button,.cat-card,.product-card,.wardrobe-cabinet').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ cursor.style.transform='scale(2.5)'; ring.style.transform='scale(1.5)'; });
-  el.addEventListener('mouseleave',()=>{ cursor.style.transform=''; ring.style.transform=''; });
-});
-
-// ══ MOBILE MENU ═════════════════════════════════════════
-const menuBtn=document.getElementById('menuBtn');
-const mobileMenu=document.getElementById('mobileMenu');
-menuBtn.addEventListener('click',()=>{
-  const open=mobileMenu.classList.toggle('open');
-  document.body.classList.toggle('menu-open',open);
-  document.body.style.overflow=open?'hidden':'';
-});
-
-// ══ CATEGORY TOGGLE (MEN/WOMEN) ═════════════════════════
-const categoryData = {
-  men: [
-    { tag: 'Featured', name: 'Ready To Wear', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80' },
-    { tag: 'Essentials', name: 'Outwear', image: 'https://images.unsplash.com/photo-1670489605175-41b5a37bd03e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG1hbGUlMjBvdXR3ZWFyfGVufDB8fDB8fHww' },
-    { tag: 'Luxury', name: 'Accessories', image: 'https://images.unsplash.com/photo-1728949687207-e92da7b5538a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1hbGUlMjBqZXdlbHJpZXN8ZW58MHx8MHx8fDA%3D' },
-    { tag: 'Limited', name: 'Footwear', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80' },
-    { tag: 'Classic', name: 'Bags', image: 'https://images.unsplash.com/photo-1644976914537-4d182068fec7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fE9GRklDRSUyMEJBR1N8ZW58MHx8MHx8fDA%3D' },
-  ],
-  women: [
-    { tag: 'Featured', name: 'Ready To Wear', image: 'https://images.unsplash.com/photo-1693746943973-c654ff84170c?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-    { tag: 'Essentials', name: 'Handbags', image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80' },
-    { tag: 'Luxury', name: 'Accessories', image: 'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D' },
-    { tag: 'Limited', name: 'Outerwear', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80' },
-    { tag: 'Trend', name: 'Footwear', image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=80' },
-  ]
-};
-
-const categoryButtons = document.querySelectorAll('.category-toggle-btn');
-const categoryCards = document.querySelectorAll('[data-category-card]');
-const categoryMark = document.querySelector('[data-category-mark]');
-
-function setCategory(gender) {
-  const selected = categoryData[gender];
-  if (!selected) return;
-
-  categoryCards.forEach((card, idx) => {
-    const item = selected[idx];
-    if (!item) return;
-
-    const bg = card.querySelector('.category-image-bg');
-    const tag = card.querySelector('[data-category-tag]');
-    const name = card.querySelector('[data-category-name]');
-
-    if (bg) {
-      bg.style.backgroundImage = `linear-gradient(160deg, rgba(22,17,12,0.35), rgba(12,10,8,0.75)), url('${item.image}')`;
-    }
-    if (tag) tag.textContent = item.tag;
-    if (name) name.textContent = item.name;
-  });
-
-  if (categoryMark) categoryMark.textContent = gender === 'men' ? 'M' : 'W';
-
-  categoryButtons.forEach((button) => {
-    const isActive = button.dataset.gender === gender;
-    button.classList.toggle('bg-gold', isActive);
-    button.classList.toggle('text-charcoal', isActive);
-    button.classList.toggle('text-cream', !isActive);
-    button.style.background = isActive ? '' : '#1f1b17';
-    button.style.border = isActive ? 'none' : '1px solid rgba(201,169,110,0.35)';
-  });
-}
-
-categoryButtons.forEach((button) => {
-  button.addEventListener('click', () => setCategory(button.dataset.gender));
-});
-
-setCategory('men');
-// ══ NAV SCROLL ══════════════════════════════════════════
-const mainNav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>{
-  mainNav.style.background=window.scrollY>50?'rgba(15,14,12,0.97)':'rgba(15,14,12,0.85)';
-});
-
-// ══ SCROLL TO TOP ════════════════════════════════════════
-const scrollTopBtn=document.getElementById('scrollTop');
-window.addEventListener('scroll',()=>{
-  const s=window.scrollY>400;
-  scrollTopBtn.style.opacity=s?'1':'0';
-  scrollTopBtn.style.transform=s?'translateY(0)':'translateY(16px)';
-});
-scrollTopBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-// ══ HERO PARTICLES ═══════════════════════════════════════
-const pContainer=document.getElementById('particles');
-for(let i=0;i<22;i++){
-  const p=document.createElement('div');
-  const dx=(Math.random()-0.5)*60;
-  p.style.cssText=`position:absolute;left:${Math.random()*100}%;top:${Math.random()*100}%;width:${1+Math.random()*2}px;height:${1+Math.random()*2}px;border-radius:50%;background:#c9a96e;opacity:0;animation:pDot ${5+Math.random()*5}s ease-in-out ${Math.random()*6}s infinite;--dx:${dx}px`;
-  pContainer.appendChild(p);
-}
-
-// ══════════════════════════════════════════════════════════
-// LUXURY WARDROBE — DOOR OPENING LOGIC
-// ══════════════════════════════════════════════════════════
-const wardrobeEl      = document.getElementById('wardrobeEl');
-const wardrobeSection = document.getElementById('wardrobeSection');
-let wardrobeOpened    = false;
-let sliderStarted     = false;
-
-function openWardrobe() {
-  if (wardrobeOpened) return;
-  wardrobeOpened = true;
-
-  // Add open class — triggers CSS door rotateY transitions
-  wardrobeEl.classList.add('wardrobe-open');
-
-  // Spawn dust motes AFTER doors begin to part
-  setTimeout(spawnMotes, 900);
-
-  // Start outfit slider after doors are fully open
-  setTimeout(() => {
-    if (!sliderStarted) {
-      sliderStarted = true;
-      startProgress();
-       sliderTimer = setTimeout(() => changeOutfitSlide(1), DURATION);
-    }
-  }, 1900);
-}
-
-// ── DESKTOP: open automatically 2.4s after page load ──────
-const isMobile = () => window.innerWidth < 768;
-if (!isMobile()) {
-  setTimeout(openWardrobe, 2400);
-} else {
-  // ── MOBILE: open when section scrolls into view ≥35% ──────
-  const scrollTrigger = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting && e.intersectionRatio >= 0.35) {
-        openWardrobe();
-        scrollTrigger.disconnect();
-      }
-    });
-  }, { threshold: 0.35 });
-  scrollTrigger.observe(wardrobeSection);
-}
-
-// Clicking the handles also opens
-document.getElementById('doorL').addEventListener('click', openWardrobe);
-document.getElementById('doorR').addEventListener('click', openWardrobe);
-
-// ══ DUST MOTES INSIDE WARDROBE ═══════════════════════════
-function spawnMotes() {
-  const container = document.getElementById('motesContainer');
-  for (let i = 0; i < 20; i++) {
-    const m = document.createElement('div');
-    m.className = 'mote';
-    const sz    = 1 + Math.random() * 2.5;
-    const delay = Math.random() * 8;
-    const dur   = 6 + Math.random() * 6;
-    const mx    = (Math.random() - 0.5) * 60;
-    m.style.cssText = `
-      left:${10 + Math.random() * 80}%;
-      top:${15 + Math.random() * 65}%;
-      width:${sz}px; height:${sz}px;
-      animation-duration:${dur}s;
-      animation-delay:${delay}s;
-      --mx:${mx}px;
-    `;
-    container.appendChild(m);
-  }
-}
-
-// ══════════════════════════════════════════════════════════
-// OUTFIT SLIDER
-// ══════════════════════════════════════════════════════════
-const outfitData = [
-  { price:'', name:'Oversized Trench' },
-  { price:'', name:'Minimal Suit' },
-  { price:'', name:'Fluid Wrap Dress' },
-  { price:'', name:'Cashmere Coat' },
-  { price:'', name:'Linen Co-ord' },
-];
-const slides    = document.querySelectorAll('.outfit-slide');
-const dots      = document.querySelectorAll('.outfit-dot');
-const progBar   = document.getElementById('progressBar');
-let current=0, sliderTimer, progTimer, progPct=0;
-const DURATION = 4200;
-
-function startProgress() {
-  progPct=0; progBar.style.width='0%'; progBar.style.transition='none';
-  clearInterval(progTimer);
-  progTimer=setInterval(()=>{
-    progPct += 100/(DURATION/80);
-    if(progPct>=100) progPct=100;
-    progBar.style.width=progPct+'%';
-    progBar.style.transition='width 0.08s linear';
-  },80);
-}
-
-function changeOutfitSlide(next, manual=false) {
-  if(next===current) return;
-  clearTimeout(sliderTimer); clearInterval(progTimer);
-  slides[current].classList.replace('active','exit');
-  slides[next].classList.remove('enter','exit');
-  slides[next].classList.add('active');
-  dots[current].classList.remove('active-dot');
-  dots[next].classList.add('active-dot');
-
-  // Floating tag fade
-  const a=document.getElementById('floatingAmt'), n=document.getElementById('floatingName');
-  if(a){ a.style.opacity='0'; a.style.transform='translateY(8px)'; }
-  if(n){ n.style.opacity='0'; }
-  setTimeout(()=>{
-    if(a){ a.textContent=outfitData[next].price; a.style.opacity='1'; a.style.transform='translateY(0)'; a.style.transition='all 0.45s ease'; }
-    if(n){ n.textContent=outfitData[next].name; n.style.opacity='1'; n.style.transition='opacity 0.45s ease 0.12s'; }
-  },300);
-
-  const prev=current;
-  setTimeout(()=>{ slides[prev].classList.remove('exit'); slides[prev].classList.add('enter'); },1100);
-  current=next;
-  startProgress();
-  sliderTimer=setTimeout(()=>changeOutfitSlide((current+1)%slides.length),DURATION);
-}
-// window.goToSlide=(n)=>goToSlide(n,true);
-
-// Touch swipe on wardrobe
-let tsY=0;
-wardrobeEl.addEventListener('touchstart',e=>{ tsY=e.touches[0].clientY; },{passive:true});
-wardrobeEl.addEventListener('touchend',e=>{
-  const dy=tsY-e.changedTouches[0].clientY;
-  if(Math.abs(dy)>40) changeOutfitSlide(dy>0?(current+1)%slides.length:(current-1+slides.length)%slides.length,true);
-});
-
-// ══ REVEAL ANIMATIONS ═════════════════════════
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-},{threshold:0.12});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(el=>{
-  const delay=el.dataset.delay?parseFloat(el.dataset.delay)*0.12:0;
-  el.style.transitionDelay=delay+'s';
-  io.observe(el);
-});
-
-// ══ WISHLIST + BAG ═══════════════════════════════════════
-document.querySelectorAll('.wish-btn').forEach(b=>{
-  b.addEventListener('click',()=>{
-    const f=b.textContent==='♥'; b.textContent=f?'♡':'♥'; b.style.color=f?'':'#e05050';
-    if(!f){ b.style.transform='scale(1.3)'; setTimeout(()=>b.style.transform='',300); }
-  });
-});
-
-
-document.querySelectorAll('.prod-actions button:first-child').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const o=btn.textContent; btn.textContent='✓ Added'; btn.style.background='#4ade80'; btn.style.color='#0f0e0c';
-    setTimeout(()=>{ btn.textContent=o; btn.style.background=''; btn.style.color=''; },1800);
-  });
-});
-
-// ══ PRODUCT CARD TILT ════════════════════════════════════
-document.querySelectorAll('.product-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width-0.5;
-    const y=(e.clientY-r.top)/r.height-0.5;
-    card.style.transform=`perspective(800px) rotateY(${x*6}deg) rotateX(${-y*6}deg) translateY(-4px)`;
-  });
-  card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
-});
-
-// ══ INPUT FOCUS GLOW ═════════════════════════════════════
-document.querySelectorAll('input').forEach(input=>{
-  input.addEventListener('focus',()=>{ input.style.borderColor='#c9a96e'; input.style.boxShadow='0 0 0 3px rgba(201,169,110,0.12)'; });
-  input.addEventListener('blur',()=>{ input.style.borderColor=''; input.style.boxShadow=''; });
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
