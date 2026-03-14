@@ -147,7 +147,10 @@ transition:transform .4s ease;
     color: #fff;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+.newsletter-p{
+    color:#395a66;
+     padding-bottom: 13px;
+}
 /* Social icons hover */
 .social-icons a:hover i {
     color: #e8854a;
@@ -180,6 +183,7 @@ transition:transform .4s ease;
     color:#8f8887;
     max-width: 200px;
     line-height: 20px;
+   
 }
 
 .foot-ul{
@@ -216,9 +220,10 @@ transition:transform .4s ease;
 
 .newsletter input{
     padding:8px;
-    border:2px solid #395a66;
+    border:2px solid #88820b;
     outline:none;
     background-color: #1b191a;
+    border-radius: 4px;
 }
 
 .btn{
