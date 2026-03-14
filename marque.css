@@ -176,6 +176,7 @@ transition:transform .4s ease;
     margin-bottom:18px;
     font-size:23px;
     color: #ffffff;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .foot-p{
@@ -251,7 +252,7 @@ transition:transform .4s ease;
 }
 
 .border {
-    border: 2px solid #395a66;
+    border: 1px solid #395a66;
     margin: 0 30px;
 }
 
