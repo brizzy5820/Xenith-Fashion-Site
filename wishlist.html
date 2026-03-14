@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATELIER — Wishlist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* ── Reset ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Outfit',sans-serif;
+  background:#151410;
+  color:#f5f0e8;
+  min-height:100vh;
+  overflow-x:hidden;
+  cursor:none;
+}
+@media(max-width:768px){body{cursor:auto}#cur,#curR{display:none}}
+
+/* ── Cursor ── */
+#cur{position:fixed;width:10px;height:10px;background:#c9a96e;border-radius:50%;pointer-events:none;z-index:9999;top:0;left:0;mix-blend-mode:difference;transition:transform 0.15s ease}
+#curR{position:fixed;width:34px;height:34px;border:1px solid rgba(201,169,110,0.55);border-radius:50%;pointer-events:none;z-index:9998;top:0;left:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);opacity:0.5}
+
+/* ── Background ── */
+.bg-scene{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 65% at 10% 15%, rgba(201,169,110,0.065), transparent 58%),
+    radial-gradient(ellipse 45% 55% at 90% 85%, rgba(201,169,110,0.05), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 55% 45%, rgba(30,22,10,0.35), transparent 65%),
+    #151410;
+}
+.bg-scene::after{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:0.5;
+}
+
+/* ── Floating orbs ── */
+.orb{
+  position:fixed;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(201,169,110,0.1),transparent 70%);
+  filter:blur(50px);
+  animation:orbDrift 20s ease-in-out infinite;
+}
+@keyframes orbDrift{0%,100%{transform:translate(0,0)}40%{transform:translate(25px,-18px)}70%{transform:translate(-15px,22px)}}
+
+/* ── Nav ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1.5rem,4vw,3rem);height:72px;
+  background:rgba(21,20,16,0.75);
+  backdrop-filter:blur(24px) saturate(1.5);
+  -webkit-backdrop-filter:blur(24px) saturate(1.5);
+  border-bottom:1px solid rgba(201,169,110,0.12);
+}
+
+/* ── Back link ── */
+.back-link{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(245,240,232,0.4);text-decoration:none;
+  transition:color 0.25s ease,gap 0.25s ease;
+}
+.back-link::before{
+  content:'';display:block;width:20px;height:1px;
+  background:#c9a96e;transition:width 0.3s ease;flex-shrink:0;
+}
+.back-link:hover{color:#c9a96e;gap:14px}
+.back-link:hover::before{width:30px}
+
+/* ── Page title ── */
+.page-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(2.4rem,6vw,5rem);line-height:1;letter-spacing:-0.01em;
+}
+.page-title em{
+  font-style:italic;
+  background:linear-gradient(90deg,#c9a96e 0%,#f5e6c5 45%,#c9a96e 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:shimmer 3.5s linear infinite;
+}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+/* ── Section label ── */
+.label-gold{
+  font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:#c9a96e;
+}
+.label-gold::after{
+  content:'';display:inline-block;width:28px;height:1px;
+  background:rgba(201,169,110,0.5);margin-left:8px;vertical-align:middle;
+}
+
+/* ── Glass panels ── */
+.glass-card{
+  background:rgba(245,240,232,0.028);
+  backdrop-filter:blur(32px) saturate(1.5);
+  -webkit-backdrop-filter:blur(32px) saturate(1.5);
+  border:1px solid rgba(201,169,110,0.16);
+  box-shadow:
+    0 1px 0 rgba(201,169,110,0.07) inset,
+    0 20px 50px rgba(0,0,0,0.38),
+    0 0 0 1px rgba(0,0,0,0.18);
+  border-radius:3px;
+  overflow:hidden;
+  position:relative;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1),
+             box-shadow 0.4s ease,
+             border-color 0.3s ease;
+}
+.glass-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(201,169,110,0.32);
+  box-shadow:
+    0 1px 0 rgba(201,169,110,0.12) inset,
+    0 32px 70px rgba(0,0,0,0.5),
+    0 0 40px rgba(201,169,110,0.06),
+    0 0 0 1px rgba(0,0,0,0.25);
+}
+
+/* Corner accent */
+.glass-card::before{
+  content:'';position:absolute;top:0;right:0;
+  width:40px;height:40px;
+  background:linear-gradient(225deg,rgba(201,169,110,0.12),transparent 60%);
+  pointer-events:none;
+}
+
+/* ── Heart icon ── */
+.heart-icon{
+  position:absolute;top:1rem;right:1rem;
+  width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(15,14,12,0.55);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(201,169,110,0.22);
+  border-radius:50%;
+  color:#c9a96e;font-size:0.85rem;
+  animation:heartPulse 2.8s ease-in-out infinite;
+}
+@keyframes heartPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+
+/* ── Remove button ── */
+.remove-btn{
+  background:transparent;border:none;cursor:pointer;
+  font-family:'Outfit',sans-serif;
+  font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(245,240,232,0.28);
+  padding:0;position:relative;transition:color 0.2s ease;
+}
+.remove-btn::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;
+  height:1px;background:#c9a96e;
+  transform:scaleX(0);transition:transform 0.3s ease;transform-origin:left;
+}
+.remove-btn:hover{color:#c9a96e}
+.remove-btn:hover::after{transform:scaleX(1)}
+
+/* ── Move to bag button ── */
+.bag-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,#c9a96e 0%,#e8d5a0 50%,#c9a96e 100%);
+  background-size:200% auto;
+  color:#0f0e0c;border:none;cursor:pointer;
+  font-family:'Outfit',sans-serif;
+  font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;
+  padding:0.6rem 1.2rem;
+  transition:all 0.35s ease;
+}
+.bag-btn:hover{background-position:right center;transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,169,110,0.25)}
+
+/* ── Empty state ── */
+.empty-wish{
+  grid-column:1/-1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:5rem 2rem;text-align:center;gap:1.2rem;
+  color:rgba(245,240,232,0.3);
+}
+
+/* ── Entrance animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both}
+.fd1{animation-delay:0.08s}.fd2{animation-delay:0.18s}.fd3{animation-delay:0.28s}
+
+/* ── Item count badge ── */
+.count-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(201,169,110,0.15);
+  border:1px solid rgba(201,169,110,0.3);
+  font-size:0.6rem;color:#c9a96e;
+  font-family:'Outfit',sans-serif;font-weight:400;
+  vertical-align:middle;margin-left:8px;
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div id="cur"></div>
+<div id="curR"></div>
+
+<!-- Background -->
+<div class="bg-scene"></div>
+<div class="orb" style="width:480px;height:480px;top:-120px;left:-120px;animation-duration:24s"></div>
+<div class="orb" style="width:320px;height:320px;bottom:-80px;right:-60px;animation-delay:10s;animation-duration:28s"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html"
+    class="font-cormorant font-light uppercase no-underline transition-colors duration-300"
+    style="font-size:clamp(1.2rem,2.5vw,1.6rem);letter-spacing:0.35em;color:#f5f0e8"
+    onmouseenter="this.style.color='#c9a96e'" onmouseleave="this.style.color='#f5f0e8'">
+    Atelier
+  </a>
+  <div class="flex items-center gap-2" style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(245,240,232,0.38)">
+    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#c9a96e" stroke-width="1.5">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+    Wishlist
+  </div>
+</nav>
+
+<!-- ── MAIN ── -->
+<main class="relative z-10 min-h-screen px-6 sm:px-10 md:px-16 lg:px-24" style="padding-top:110px;padding-bottom:96px">
+
+  <!-- Back -->
+  <a href="index.html" class="back-link fade-up fd1 mb-10 inline-flex">Back to Collections</a>
+
+  <!-- Heading -->
+  <div class="fade-up fd2 mb-2">
+    <div class="label-gold mb-4">Curated for You</div>
+    <h1 class="page-title">Your <em>Wishlist</em></h1>
+  </div>
+  <p class="fade-up fd3" style="font-size:0.85rem;color:rgba(245,240,232,0.35);font-weight:300;letter-spacing:0.02em;margin-bottom:3rem">
+    Saved pieces ready for your next look.
+  </p>
+
+  <!-- Grid -->
+  <section id="wishGrid" class="grid gap-5"
+    style="grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr))">
+  </section>
+
+</main>
+
+<script>
+// ── Cursor ──
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-5+'px';cur.style.top=my-5+'px'});
+(function t(){rx+=(mx-rx-17)*0.12;ry+=(my-ry-17)*0.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(t)})();
+
+// ── Cart & Wishlist logic (IDs & functions unchanged) ──
+const KEY='atelierWishlist';
+let wishlist=JSON.parse(localStorage.getItem(KEY)||'[]');
+const wishGrid=document.getElementById('wishGrid');
+const fmt=(v)=>`$${Number(v||0).toFixed(0)}`;
+
+function save(){localStorage.setItem(KEY,JSON.stringify(wishlist));}
+
+function render(){
+  if(!wishlist.length){
+    wishGrid.innerHTML=`
+      <div class="empty-wish">
+        <svg width="52" height="52" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1" viewBox="0 0 24 24">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <p style="font-size:0.85rem;letter-spacing:0.04em">Your wishlist is empty.</p>
+        <p style="font-size:0.72rem;color:rgba(245,240,232,0.2)">Tap hearts on products to save them.</p>
+        <a href="index.html" style="margin-top:0.5rem;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:#c9a96e;text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.3);padding-bottom:2px">Browse Collection →</a>
+      </div>`;
+    return;
+  }
+
+  // Update heading count badge
+  const existing = document.querySelector('.count-badge');
+  if(!existing){
+    const h = document.querySelector('.page-title');
+    const badge = document.createElement('span');
+    badge.className='count-badge';
+    badge.id='wishCount';
+    h.appendChild(badge);
+  }
+  const badge = document.getElementById('wishCount');
+  if(badge) badge.textContent = wishlist.length;
+
+  wishGrid.innerHTML=wishlist.map((i,idx)=>`
+    <article class="glass-card" style="animation:fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) ${idx*0.09}s both;padding:1.5rem">
+
+      <!-- Heart badge -->
+      <div class="heart-icon">♥</div>
+
+      <!-- Brand -->
+      <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:#c9a96e;margin-bottom:6px;padding-right:2rem">${i.brand||'Atelier'}</div>
+
+      <!-- Name -->
+      <h3 class="font-cormorant" style="font-size:clamp(1.3rem,2.8vw,1.75rem);font-weight:300;line-height:1.15;letter-spacing:0.01em;margin-bottom:1.2rem;padding-right:1rem">${i.name}</h3>
+
+      <!-- Divider -->
+      <div style="height:1px;background:linear-gradient(90deg,rgba(201,169,110,0.22),transparent);margin-bottom:1.1rem"></div>
+
+      <!-- Price + actions -->
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:0.75rem;flex-wrap:wrap">
+        <strong class="font-cormorant font-light" style="font-size:1.5rem;color:#c9a96e">${fmt(i.price)}</strong>
+        <div style="display:flex;align-items:center;gap:1rem">
+          <button class="bag-btn">Add to Bag</button>
+          <button class="remove-btn" onclick="removeWish('${i.id}')">Remove</button>
+        </div>
+      </div>
+
+    </article>
+  `).join('');
+
+  // Cursor enlarge on card elements
+  document.querySelectorAll('a,button,.glass-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.transform='scale(2.4)';curR.style.transform='scale(1.5)'});
+    el.addEventListener('mouseleave',()=>{cur.style.transform='';curR.style.transform=''});
+  });
+}
+
+window.removeWish=(id)=>{wishlist=wishlist.filter(i=>i.id!==id);save();render();};
+render();
+</script>
+</body>
+</html>

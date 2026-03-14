@@ -1,4 +1,32 @@
+const track = document.querySelector('.marquee-track');
+const container = document.querySelector('.marquee-row');
 
+if (track && container) {
+  let speed = 1; // pixels per frame
+  let direction = -1; // -1: moving left, 1: moving right
+
+  function animateMarquee() {
+    const trackWidth = track.scrollWidth;
+    const containerWidth = container.clientWidth;
+
+    let left = parseFloat(getComputedStyle(track).left) || 0;
+
+    const maxLeft = 0;
+    const minLeft = containerWidth - trackWidth;
+
+    if (left <= minLeft) direction = 1;
+    if (left >= maxLeft) direction = -1;
+
+    track.style.left = (left + speed * direction) + 'px';
+
+    requestAnimationFrame(animateMarquee);
+  }
+
+  animateMarquee();
+}
+
+// ===== Main site interactions moved from index.html =====
+if (document.getElementById('mainNav')) {
 // ══ CURSOR ══════════════════════════════════════════════
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursorRing');
@@ -21,22 +49,23 @@ menuBtn.addEventListener('click',()=>{
   document.body.classList.toggle('menu-open',open);
   document.body.style.overflow=open?'hidden':'';
 });
+
 // ══ CATEGORY TOGGLE (MEN/WOMEN) ═════════════════════════
 const categoryData = {
   men: [
-    { tag: 'Featured', name: 'Ready To Wear', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80' },
+     { tag: 'Featured', name: 'Ready To Wear', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80' },
     { tag: 'Essentials', name: 'Outwear', image: 'https://images.unsplash.com/photo-1670489605175-41b5a37bd03e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG1hbGUlMjBvdXR3ZWFyfGVufDB8fDB8fHww' },
     { tag: 'Luxury', name: 'Accessories', image: 'https://images.unsplash.com/photo-1623040594026-5e720959f9a9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG1hbGUlMjB3cmlzdCUyMHdhdGNoZXN8ZW58MHx8MHx8fDA%3D' },
     { tag: 'Limited', name: 'Footwear', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80' },
     { tag: 'Classic', name: 'Bags', image: 'https://images.unsplash.com/photo-1644976914537-4d182068fec7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fE9GRklDRSUyMEJBR1N8ZW58MHx8MHx8fDA%3D' },
   ],
   women: [
-    { tag: 'Featured', name: 'Ready To Wear', image: 'https://images.unsplash.com/photo-1693746943973-c654ff84170c?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+      { tag: 'Featured', name: 'Ready To Wear', image: 'https://images.unsplash.com/photo-1693746943973-c654ff84170c?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
     { tag: 'Essentials', name: 'Handbags', image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=80' },
     { tag: 'Luxury', name: 'Accessories', image: 'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YWNjZXNzb3JpZXN8ZW58MHx8MHx8fDA%3D' },
     { tag: 'Limited', name: 'Outerwear', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80' },
     { tag: 'Trend', name: 'Footwear', image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=80' },
-  ]
+]
 };
 
 const categoryButtons = document.querySelectorAll('.category-toggle-btn');
@@ -145,6 +174,7 @@ categoryButtons.forEach((button) => {
 });
 
 setCategory('men', false);
+
 // ══ NAV SCROLL ══════════════════════════════════════════
 const mainNav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{
@@ -311,21 +341,189 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').fo
   io.observe(el);
 });
 
-// ══ WISHLIST + BAG ═══════════════════════════════════════
-document.querySelectorAll('.wish-btn').forEach(b=>{
-  b.addEventListener('click',()=>{
-    const f=b.textContent==='♥'; b.textContent=f?'♡':'♥'; b.style.color=f?'':'#e05050';
-    if(!f){ b.style.transform='scale(1.3)'; setTimeout(()=>b.style.transform='',300); }
+// ══ CART + WISHLIST + SEARCH ═════════════════════════════
+const STORAGE_KEYS = { cart: 'atelierCart', wishlist: 'atelierWishlist' };
+const cartToggleBtn = document.getElementById('cartToggleBtn');
+const wishlistToggleBtn = document.getElementById('wishlistToggleBtn');
+const cartDrawer = document.getElementById('cartDrawer');
+const wishlistDrawer = document.getElementById('wishlistDrawer');
+const cartDrawerItems = document.getElementById('cartDrawerItems');
+const wishlistDrawerItems = document.getElementById('wishlistDrawerItems');
+const panelBackdrop = document.getElementById('panelBackdrop');
+const cartCountBadge = document.getElementById('cartCountBadge');
+const wishlistCountBadge = document.getElementById('wishlistCountBadge');
+const cartSubtotal = document.getElementById('cartSubtotal');
+const searchToggleBtn = document.getElementById('searchToggleBtn');
+const searchOverlay = document.getElementById('searchOverlay');
+const searchCloseBtn = document.getElementById('searchCloseBtn');
+const siteSearchInput = document.getElementById('siteSearchInput');
+const searchStatus = document.getElementById('searchStatus');
+
+let cartItems = JSON.parse(localStorage.getItem(STORAGE_KEYS.cart) || '[]');
+let wishlistItems = JSON.parse(localStorage.getItem(STORAGE_KEYS.wishlist) || '[]');
+
+function saveStore() {
+  localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(cartItems));
+  localStorage.setItem(STORAGE_KEYS.wishlist, JSON.stringify(wishlistItems));
+}
+
+function formatPrice(value) { return `$${Number(value || 0).toFixed(0)}`; }
+
+function getProductPayload(card, idx) {
+  const brand = card.querySelector('.text-gold.uppercase')?.textContent?.trim() || 'Atelier';
+  const name = card.querySelector('.font-cormorant.font-light.text-cream.mb-2')?.textContent?.trim() || `Piece ${idx + 1}`;
+  const priceText = card.querySelector('.text-gold[style*="font-size:0.88rem"]')?.textContent?.trim() || '$0';
+  const price = Number((priceText.match(/[\d.]+/) || ['0'])[0]);
+  return { id: `${brand}-${name}`.toLowerCase().replace(/[^a-z0-9]+/g,'-'), brand, name, price };
+}
+
+const productCards = Array.from(document.querySelectorAll('.prod-grid .product-card'));
+productCards.forEach((card, idx) => {
+  const payload = getProductPayload(card, idx);
+  card.dataset.productId = payload.id;
+  card.dataset.productName = payload.name;
+  card.dataset.productBrand = payload.brand;
+  card.dataset.productPrice = String(payload.price);
+  const addBtn = card.querySelector('.prod-actions button:first-child');
+  const wishBtn = card.querySelector('.wish-btn');
+
+  addBtn?.addEventListener('click', () => {
+    const existing = cartItems.find(item => item.id === payload.id);
+    if (existing) existing.qty += 1;
+    else cartItems.push({ ...payload, qty: 1 });
+    saveStore();
+    renderPanels();
+    const o = addBtn.textContent;
+    addBtn.textContent='✓ Added'; addBtn.style.background='#4ade80'; addBtn.style.color='#0f0e0c';
+    setTimeout(()=>{ addBtn.textContent=o; addBtn.style.background=''; addBtn.style.color=''; },1200);
+    openPanel('cart');
+  });
+
+  wishBtn?.addEventListener('click', () => {
+    const i = wishlistItems.findIndex(item => item.id === payload.id);
+    const adding = i === -1;
+    if (adding) wishlistItems.push(payload);
+    else wishlistItems.splice(i, 1);
+    wishBtn.textContent = adding ? '♥' : '♡';
+    wishBtn.style.color = adding ? '#e05050' : '';
+    if (adding) { wishBtn.style.transform='scale(1.2)'; setTimeout(()=>wishBtn.style.transform='',220); }
+    saveStore();
+    renderPanels();
+    if (adding) openPanel('wishlist');
   });
 });
 
+function removeFromCart(id) {
+  cartItems = cartItems.filter(item => item.id !== id);
+  saveStore();
+  renderPanels();
+}
 
-document.querySelectorAll('.prod-actions button:first-child').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const o=btn.textContent; btn.textContent='✓ Added'; btn.style.background='#4ade80'; btn.style.color='#0f0e0c';
-    setTimeout(()=>{ btn.textContent=o; btn.style.background=''; btn.style.color=''; },1800);
+function removeFromWishlist(id) {
+  wishlistItems = wishlistItems.filter(item => item.id !== id);
+  saveStore();
+  renderPanels();
+  document.querySelectorAll('.product-card').forEach((card)=>{
+    if(card.dataset.productId===id){
+      const btn=card.querySelector('.wish-btn');
+      if(btn){ btn.textContent='♡'; btn.style.color=''; }
+    }
   });
+}
+
+function renderPanels() {
+  cartCountBadge.textContent = String(cartItems.reduce((sum, i) => sum + i.qty, 0));
+  wishlistCountBadge.textContent = String(wishlistItems.length);
+  cartSubtotal.textContent = formatPrice(cartItems.reduce((sum, i) => sum + (i.price * i.qty), 0));
+
+  cartDrawerItems.innerHTML = cartItems.length ? cartItems.map(item => `
+    <div class="mb-4 pb-4" style="border-bottom:1px solid rgba(201,169,110,0.12)">
+      <div class="text-gold uppercase" style="font-size:0.58rem;letter-spacing:0.14em">${item.brand}</div>
+      <div class="font-cormorant text-cream" style="font-size:1.2rem">${item.name}</div>
+      <div class="flex items-center justify-between mt-2 text-cream">
+        <span>Qty ${item.qty} · ${formatPrice(item.price)}</span>
+        <button onclick="removeFromCart('${item.id}')" class="text-gold bg-transparent border-none cursor-pointer">Remove</button>
+      </div>
+    </div>
+  `).join('') : '<p style="color:rgba(245,240,232,0.55)">Your bag is empty.</p>';
+
+  wishlistDrawerItems.innerHTML = wishlistItems.length ? wishlistItems.map(item => `
+    <div class="mb-4 pb-4" style="border-bottom:1px solid rgba(201,169,110,0.12)">
+      <div class="text-gold uppercase" style="font-size:0.58rem;letter-spacing:0.14em">${item.brand}</div>
+      <div class="font-cormorant text-cream" style="font-size:1.2rem">${item.name}</div>
+      <div class="flex items-center justify-between mt-2 text-cream">
+        <span>${formatPrice(item.price)}</span>
+        <button onclick="removeFromWishlist('${item.id}')" class="text-gold bg-transparent border-none cursor-pointer">Remove</button>
+      </div>
+    </div>
+  `).join('') : '<p style="color:rgba(245,240,232,0.55)">Your wishlist is empty.</p>';
+
+  document.querySelectorAll('.product-card').forEach((card) => {
+    const wishBtn = card.querySelector('.wish-btn');
+    const inWish = wishlistItems.some((item) => item.id === card.dataset.productId);
+    if (wishBtn) {
+      wishBtn.textContent = inWish ? '♥' : '♡';
+      wishBtn.style.color = inWish ? '#e05050' : '';
+    }
+  });
+}
+
+window.removeFromCart = removeFromCart;
+window.removeFromWishlist = removeFromWishlist;
+
+function closePanels() {
+  cartDrawer.style.transform = 'translateX(100%)';
+  wishlistDrawer.style.transform = 'translateX(100%)';
+  panelBackdrop.style.opacity = '0';
+  panelBackdrop.style.pointerEvents = 'none';
+}
+
+function openPanel(type) {
+  panelBackdrop.style.opacity = '1';
+  panelBackdrop.style.pointerEvents = 'auto';
+  cartDrawer.style.transform = type === 'cart' ? 'translateX(0)' : 'translateX(100%)';
+  wishlistDrawer.style.transform = type === 'wishlist' ? 'translateX(0)' : 'translateX(100%)';
+}
+
+cartToggleBtn?.addEventListener('click', () => openPanel('cart'));
+wishlistToggleBtn?.addEventListener('click', () => openPanel('wishlist'));
+document.getElementById('cartCloseBtn')?.addEventListener('click', closePanels);
+document.getElementById('wishlistCloseBtn')?.addEventListener('click', closePanels);
+panelBackdrop?.addEventListener('click', closePanels);
+
+function closeSearch() {
+  searchOverlay.style.opacity = '0';
+  searchOverlay.style.transform = 'translateY(-14px)';
+  searchOverlay.style.pointerEvents = 'none';
+}
+
+function openSearch() {
+  searchOverlay.style.opacity = '1';
+  searchOverlay.style.transform = 'translateY(0)';
+  searchOverlay.style.pointerEvents = 'auto';
+  siteSearchInput.focus();
+}
+
+searchToggleBtn?.addEventListener('click', openSearch);
+searchCloseBtn?.addEventListener('click', closeSearch);
+
+siteSearchInput?.addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  let visibleCount = 0;
+  productCards.forEach((card) => {
+    const hit = !q || card.dataset.productName.toLowerCase().includes(q) || card.dataset.productBrand.toLowerCase().includes(q);
+    card.style.display = hit ? '' : 'none';
+    if (hit) visibleCount += 1;
+  });
+  if (q) {
+    searchStatus.classList.remove('hidden');
+    searchStatus.textContent = `${visibleCount} result${visibleCount === 1 ? '' : 's'} for "${e.target.value}"`;
+  } else {
+    searchStatus.classList.add('hidden');
+  }
 });
+
+renderPanels();
 
 // ══ PRODUCT CARD TILT ════════════════════════════════════
 document.querySelectorAll('.product-card').forEach(card=>{
@@ -343,3 +541,4 @@ document.querySelectorAll('input').forEach(input=>{
   input.addEventListener('focus',()=>{ input.style.borderColor='#c9a96e'; input.style.boxShadow='0 0 0 3px rgba(201,169,110,0.12)'; });
   input.addEventListener('blur',()=>{ input.style.borderColor=''; input.style.boxShadow=''; });
 });
+}
