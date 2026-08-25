@@ -72,30 +72,28 @@ export function StudentDashboard() {
     <main className="min-h-screen">
       <div className="mx-auto ">
         <section className="mb-7">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col p-4 bg-brand-700 rounded-2xl  gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="mb-1 text-sm font-medium text-muted-foreground">
+              <p className="mb-1 text-sm font-medium text-gray-200">
                 Monday, August 10, 2026
               </p>
 
-              <h1 className="text-2xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
-                Good evening, Daniel
+              <h1 className="text-2xl font-semibold tracking-tight text-gray-100 sm:text-3xl">
+                Good evening, Bolu
               </h1>
 
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-1 text-sm text-gray-200">
                 Here&apos;s an overview of your school activities.
               </p>
             </div>
 
-            <div className="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-sm text-gray-600 shadow-sm">
-              <GraduationCap size={18} className="text-brand-600" />
-              <span>SS2 • Science</span>
-            </div>
+       
           </div>
         </section>
 
-        <section className="mb-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-          <OverviewCard icon={BookOpen} label="Classes" value={String(totalClasses)} detail="This term" />
+        <section className="mb-6 flex flex-col  grid-cols-4 shadow rounded-2xl bg-white p-5 gap-4 lg:grid-cols-4">
+         <div className="flex justify-around items-center gap-3">
+           <OverviewCard icon={BookOpen} label="Classes" value={String(totalClasses)} detail="This term" />
           <OverviewCard
             icon={FileText}
             label="Assignments"
@@ -109,12 +107,16 @@ export function StudentDashboard() {
             value={`${averageGrade}%`}
             detail="Current term"
           />
-          <OverviewCard
-            icon={CheckCircle2}
-            label="Attendance"
-            value="94%"
-            detail="This term"
-          />
+         </div>
+            <div>
+             
+              <div className="h-2 overflow-hidden rounded-full bg-gray-100">
+                  <div className="h-full rounded-full bg-brand-600" style={{ width: "94%" }} />
+                </div>
+                 <div className="flex justify-between mt-1">
+                <p className="font-semibold text-brand-700">Attendance</p> <p className="font-semibold text-brand-700">95%</p>
+              </div>
+            </div>
         </section>
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
@@ -243,29 +245,33 @@ function OverviewCard({
 }: OverviewCardProps) {
   return (
     <div
-      className={`rounded-xl bg-white p-4 shadow-sm sm:p-5 ${
-        highlighted ? "ring-1 ring-brand-100" : ""
-      }`}
+      className={`rounded-xl flex flex-col items-center`}
     >
-      <div className="mb-3 flex items-center justify-between">
+      <div className="mb-2 flex items-center justify-between">
         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-50">
           <Icon size={18} className="text-brand-600" />
         </div>
       </div>
 
-      <p className="text-xs font-medium text-gray-500">
-        {label}
-      </p>
+      <div className="flex items-center gap-2">
 
-      <div className="mt-1 flex items-baseline gap-2">
-        <span className="text-xl font-semibold text-gray-900 sm:text-2xl">
+      <span className="text-4xs font-semibold text-gray-900 sm:text-2xl">
           {value}
         </span>
+         <p className="text-xs font-medium text-gray-500">
+        {label}
+      </p>
+      </div>
+     
+
+      {/* <div className="mt-1 flex items-baseline gap-2">
+        
 
         <span className="text-xs text-gray-400">
           {detail}
         </span>
-      </div>
+      </div> */}
+      
     </div>
   );
 }
