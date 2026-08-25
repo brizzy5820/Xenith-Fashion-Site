@@ -1,0 +1,107 @@
+/* app/globals.css */
+@import "tailwindcss";
+
+@theme {
+  /* Red brand palette */
+  --color-brand-50: #fef2f2;
+  --color-brand-100: #fee2e2;
+  --color-brand-200: #fecaca;
+  --color-brand-300: #fca5a5;
+  --color-brand-400: #f87171;
+  --color-brand-500: #ef4444;
+  --color-brand-600: #dc2626;
+  --color-brand-700: #b91c1c;
+  --color-brand-800: #991b1b;
+  --color-brand-900: #480808;
+
+  /* Muted tokens */
+  --color-muted: #fef2f2;
+  --color-muted-foreground: #7f5a5a;
+
+  /* Lecture theme — reusable green variant for the timetable */
+  --color-lecture-50: #ecfdf5;
+  --color-lecture-100: #d1fae5;
+  --color-lecture-200: #a7f3d0;
+  --color-lecture-300: #6ee7b7;
+  --color-lecture-400: #34d399;
+  --color-lecture-500: #22c55c;
+  --color-lecture-600: #16a34a;
+  --color-lecture-700: #15803d;
+  --color-lecture-800: #166534;
+  --color-lecture-900: #14532d;
+}
+body {
+  background-color: #f4faf6;
+  color:  #480808;
+}
+
+html,
+body,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ea7272 transparent
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(22, 163, 74, 0.08);
+  border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(197, 34, 34, 0.9), rgba(128, 21, 21, 0.7));
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgb(197, 34, 34), rgba(163, 22, 22, 0.85));
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Timetable — slim, brand-themed scrollbar with timed auto-fade */
+.timetable-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #db2e2e transparent;
+}
+
+.timetable-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.timetable-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.timetable-scroll::-webkit-scrollbar-thumb {
+  background-color: #c52222;
+  border-radius: 3px;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.timetable-scroll.timetable-scroll--active::-webkit-scrollbar-thumb {
+  opacity: 0.6;
+}
+
+.timetable-scroll.timetable-scroll--hidden::-webkit-scrollbar-thumb {
+  opacity: 0;
+}
+
+.timetable-scroll:hover.timetable-scroll--hidden::-webkit-scrollbar-thumb {
+  opacity: 0.4;
+}
+
+.timetable-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
