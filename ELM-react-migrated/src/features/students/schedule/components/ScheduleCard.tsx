@@ -26,10 +26,10 @@ export const sessionTypeMeta: Record<SessionType, SessionMeta> = {
   lecture: {
     label: "Lecture",
     icon: BookOpen,
-    text: "text-lecture-700",
-    dot: "bg-lecture-500",
-    border: "border-lecture-500",
-    surface: "bg-lecture-50",
+    text: "text-brand-700",
+    dot: "bg-brand-500",
+    border: "border-brand-500",
+    surface: "bg-brand-50",
   },
   practical: {
     label: "Practical",

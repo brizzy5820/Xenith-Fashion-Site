@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { MobileNav } from "./MobileNav";
 import { MobileTopBar } from "./MobileTopBar";
+import { TopBar } from "./TopBar";
 import { UserRole } from "@/config/navigation";
 
 interface DashboardShellProps {
@@ -23,8 +24,10 @@ export function DashboardShell({ role, children }: DashboardShellProps) {
 
       <MobileTopBar role={role} />
 
+      <TopBar role={role} collapsed={collapsed} />
+
       <main
-        className={`min-h-screen px-4 pb-24 pt-20 transition-[margin] duration-300 ease-in-out sm:px-6 md:pb-12 md:pt-10 ${
+        className={`min-h-screen px-4 pb-24 pt-20 transition-[margin] duration-300 ease-in-out sm:px-6 md:pb-12 md:pt-25 ${
           collapsed ? "md:ml-20" : "md:ml-64"
         }`}
       >

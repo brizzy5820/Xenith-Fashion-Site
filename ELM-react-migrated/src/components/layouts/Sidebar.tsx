@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft,PanelLeft, PanelRight } from "lucide-react";
 import { navigation, getProfileHref, UserRole } from "@/config/navigation";
 
 interface SidebarProps {
@@ -33,29 +33,30 @@ export function Sidebar({ role, collapsed: collapsedProp, onToggle }: SidebarPro
         collapsed ? "w-20" : "w-64"
       }`}
     >
-      {/* Collapse / expand toggle pinned to the edge */}
+   
+
+      {/* Logo */}
+      <div className={`flex h-16 justify-between items-center ${collapsed ? "justify-center px-0 flex-col gap-3 mt-3" : "px-6"}`}>
+        <Link to="/" className={`flex items-center gap-2 text-xl font-bold text-white ${collapsed ? ' order-2': 'order' }`}>
+          <img
+            src="/public/img/graduate.png"
+            alt="ELM Logo"
+            className="h-8 w-8 shrink-0 rounded-lg object-contain "
+          />
+          {!collapsed && <span>ELM</span>}
+        </Link>
+           {/* Collapse / expand toggle pinned to the edge */}
       <button
         type="button"
         onClick={toggle}
         aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        className="absolute -right-3 top-16 z-50 flex h-6 w-6 items-center justify-center rounded-full border border-brand-700 bg-white text-brand-700 shadow-md transition hover:bg-brand-50"
+        className="  items-center justify-center  text-gray-100 shadow-md transition "
       >
-        <ChevronLeft
-          size={14}
-          className={`transition-transform duration-300 ${collapsed ? "rotate-180" : ""}`}
+        <PanelLeft
+          size={16}
+          className={`transition-transform duration-300 ${collapsed ? "rotate-180 order-1" : ""}`}
         />
       </button>
-
-      {/* Logo */}
-      <div className={`flex h-16 items-center ${collapsed ? "justify-center px-0" : "px-6"}`}>
-        <Link to="/" className="flex items-center gap-2 text-xl font-bold text-white">
-          <img
-            src="/public/img/graduate.png"
-            alt="ELM Logo"
-            className="h-8 w-8 shrink-0 rounded-lg object-contain"
-          />
-          {!collapsed && <span>ELM</span>}
-        </Link>
       </div>
 
       {/* Nav */}

@@ -45,7 +45,7 @@ export interface TimetableState {
 export const cellKey = (day: DayOfWeek, periodId: string) =>
   `${day}__${periodId}`;
 
-const dayNames: DayOfWeek[] = [
+const dayNames: string[] = [
   "Sunday",
   "Monday",
   "Tuesday",

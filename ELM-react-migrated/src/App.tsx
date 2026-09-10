@@ -8,6 +8,8 @@ import AssignmentsPage from "@/pages/AssignmentsPage";
 import AssignmentDetailsPage from "@/pages/AssignmentDetailsPage";
 import ClassesPage from "@/pages/ClassesPage";
 import ClassDetailsPage from "@/pages/ClassDetailsPage";
+import CoursePlayerPage from "@/pages/CoursePlayerPage";
+import MaterialViewerPage from "@/pages/MaterialViewerPage";
 import StudentProfilePage from "@/pages/StudentProfilePage";
 import StudentProfileSectionPage from "@/pages/StudentProfileSectionPage";
 import SchedulePage from "@/pages/SchedulePage";
@@ -54,6 +56,16 @@ export default function App() {
           <Route path="profile/:section" element={<PrivatePage title="Profile"><StudentProfileSectionPage /></PrivatePage>} />
           <Route path="schedule" element={<PrivatePage title="Timetable & Schedule"><SchedulePage /></PrivatePage>} />
         </Route>
+
+        {/* Immersive lesson player + material viewer (full screen, no sidebar) */}
+        <Route
+          path="/students/classes/lectures/:lectureId"
+          element={<PrivatePage title="Lesson"><CoursePlayerPage /></PrivatePage>}
+        />
+        <Route
+          path="/students/materials/:materialId"
+          element={<PrivatePage title="Material"><MaterialViewerPage /></PrivatePage>}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

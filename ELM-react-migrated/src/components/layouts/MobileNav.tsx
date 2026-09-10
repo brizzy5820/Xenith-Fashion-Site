@@ -12,7 +12,6 @@ interface MobileNavProps {
 export function MobileNav({ role }: MobileNavProps) {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-
   const items = navigation[role] || [];
   const primary = items.slice(0, 4);
   const more = items.slice(4);

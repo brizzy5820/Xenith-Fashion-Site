@@ -6,11 +6,12 @@ interface ProfileHeaderProps {
   onSettings?: () => void;
 }
 
-function MetaChip({ label, value }: { label: string; value: string }) {
+function MetaChip({ label, value }: { label: string; value: string|number }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-lg bg-gray-50 px-3 py-1.5 text-xs">
+    <span className="inline-flex items-center gap-1.5 rounded-lg bg-gray-50 px-3 py-1.5 text-sm">
       <span className="font-semibold uppercase tracking-[0.08em] text-gray-400">
-        {label}
+        {label} 
+        :
       </span>
       <span className="font-medium text-gray-800">{value}</span>
     </span>
@@ -110,12 +111,24 @@ export function ProfileHeader({ onSettings }: ProfileHeaderProps) {
             value={enrollment?.academicSession ?? "Not assigned"}
           />
           <MetaChip
-            label="Admission no."
+            label="Admission no"
             value={studentProfile.admissionNumber}
           />
           <MetaChip
             label="Enrollment"
             value={enrolled ? "Currently enrolled" : "Enrollment required"}
+          />
+           <MetaChip
+            label="Attendance"
+            value={studentProfile.academic.attendance}
+          />
+           <MetaChip
+            label="cgpa"
+            value={studentProfile.academic.cgpa}
+          />
+           <MetaChip
+            label="Term"
+            value={studentProfile.academic.currentTerm}
           />
         </div>
       </div>

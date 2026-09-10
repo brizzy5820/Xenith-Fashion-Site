@@ -34,20 +34,20 @@ export function ClassActivityBar({
       {ongoingLecture ? (
         <Link
           to={`/students/classes/lectures/${ongoingLecture.lectureId}`}
-          className="group relative flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md"
+          className="group relative flex items-center gap-3 rounded-xl bg-brand-700 p-4 shadow-sm transition hover:shadow-md"
         >
-          <span className="absolute inset-0 rounded-xl ring-2 ring-brand-200" />
+          {/* <span className="absolute inset-0 rounded-xl ring-2 ring-brand-200" /> */}
 
-          <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50">
+          <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ">
             <BookOpen
               size={18}
-              className="text-brand-600"
+              className="text-white"
             />
 
             {/* Live indicator */}
             <span className="absolute -right-1 -top-1 flex h-3 w-3">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-60" />
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-brand-600" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-brand-400" />
             </span>
           </div>
 
@@ -55,51 +55,51 @@ export function ClassActivityBar({
             <div className="flex items-center gap-2">
               <Radio
                 size={12}
-                className="text-brand-600"
+                className="text-brand-100"
               />
 
-              <p className="text-[10px] font-semibold uppercase tracking-wide text-brand-700">
+              <p className="text-[10px] font-semibold uppercase tracking-wide text-brand-100">
                 Ongoing Lecture
               </p>
             </div>
 
-            <p className="truncate text-sm font-semibold text-gray-900">
+            <p className="truncate text-sm font-semibold text-gray-100">
               {ongoingLecture.title}
             </p>
 
             <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 pr-2">
               <div className="flex items-center gap-1.5">
-                <span className="flex h-4 w-4 items-center justify-center rounded bg-brand-50">
-                  <BookOpen size={10} className="text-brand-600" />
+                <span className="flex h-4 w-4 items-center justify-center rounded ">
+                  <BookOpen size={12} className="text-white" />
                 </span>
-                <span className="truncate text-xs text-gray-600">
+                <span className="truncate text-xs text-gray-100">
                   {ongoingLecture.topic}
                 </span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <span className="flex h-4 w-4 items-center justify-center rounded bg-brand-50">
-                  <MapPin size={10} className="text-brand-600" />
+                <span className="flex h-4 w-4 items-center justify-center rounded ">
+                  <MapPin size={12} className="text-white" />
                 </span>
-                <span className="truncate text-xs text-gray-600">
+                <span className="truncate text-xs  text-gray-100">
                   {ongoingLecture.location}
                 </span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <span className="flex h-4 w-4 items-center justify-center rounded bg-brand-50">
-                  <Clock3 size={10} className="text-brand-600" />
+                <span className="flex h-4 w-4 items-center justify-center rounded ">
+                  <Clock3 size={12} className="text-white" />
                 </span>
-                <span className="truncate text-xs text-gray-600">
+                <span className="truncate text-xs  text-gray-100">
                   {ongoingLecture.period}
                 </span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <span className="flex h-4 w-4 items-center justify-center rounded bg-brand-50">
-                  <UserRound size={10} className="text-brand-600" />
+                <span className="flex h-4 w-4 items-center justify-center rounded">
+                  <UserRound size={10} className="text-white" />
                 </span>
-                <span className="truncate text-xs text-gray-600">
+                <span className="truncate text-xs text-gray-100">
                   {ongoingLecture.teacher}
                 </span>
               </div>
@@ -133,7 +133,7 @@ export function ClassActivityBar({
       )}
 
       {/* Pending Assignments */}
-      <Link
+      {/* <Link
         to="/students/assignments"
         className="group flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm transition hover:shadow-md"
       >
@@ -169,7 +169,7 @@ export function ClassActivityBar({
           size={16}
           className="shrink-0 text-gray-300 transition group-hover:translate-x-0.5 group-hover:text-brand-600"
         />
-      </Link>
+      </Link> */}
     </div>
   );
 }

@@ -17,7 +17,7 @@ export function AssignmentCard({
   assignment,
 }: AssignmentCardProps) {
   return (
-    <div className="rounded-xl border border-brand-100 shadow-sm bg-white p-5 border-t-2 border-t-brand-500 border-b-2 border-b-brand-500 transition hover:shadow-md">
+    <div className="rounded-xl  shadow-sm bg-white p-5 transition hover:shadow-md">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100">

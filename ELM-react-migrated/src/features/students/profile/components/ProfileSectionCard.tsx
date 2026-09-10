@@ -20,14 +20,12 @@ export function ProfileSectionCard({
 }: ProfileSectionCardProps) {
   return (
     <section
-      className={`rounded-2xl bg-white p-5 shadow-sm ${className}`}
-    >
+      className={`rounded-2xl bg-white p-5 shadow-sm ${className}`}>
       <div className="flex items-start justify-between gap-4">
         <div className="flex min-w-0 items-start gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
             <Icon size={17} />
           </div>
-
           <div>
             <h2 className="text-base font-semibold text-gray-900">
               {title}

@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { useNavigate,Link } from "react-router-dom";
 import {
   ArrowRight,
   BookOpen,
@@ -15,8 +17,12 @@ import {
 
 import { classes } from "@/features/students/classes/data/Classes";
 import { assignments } from "@/features/students/assignments/data/Assignment";
+import { Modal } from "@/components/ui/Modal";
 
 export function StudentDashboard() {
+  const navigate = useNavigate();
+  const [attendanceOpen, setAttendanceOpen] = useState(false);
+
   const totalClasses = classes.length;
   const pendingAssignments = assignments.filter(
     (assignment) => assignment.status === "pending" || assignment.status === "overdue"
@@ -87,36 +93,47 @@ export function StudentDashboard() {
               </p>
             </div>
 
-       
+        
           </div>
         </section>
 
         <section className="mb-6 flex flex-col  grid-cols-4 shadow rounded-2xl bg-white p-5 gap-4 lg:grid-cols-4">
          <div className="flex justify-around items-center gap-3">
-           <OverviewCard icon={BookOpen} label="Classes" value={String(totalClasses)} detail="This term" />
-          <OverviewCard
-            icon={FileText}
-            label="Assignments"
-            value={String(pendingAssignments)}
-            detail="Pending"
-            highlighted
-          />
-          <OverviewCard
-            icon={TrendingUp}
-            label="Average Grade"
-            value={`${averageGrade}%`}
-            detail="Current term"
-          />
-         </div>
-            <div>
-             
+           <OverviewCard
+             icon={BookOpen}
+             label="Classes"
+             onClick={() => navigate("/students/classes")}
+           />
+           <OverviewCard
+             icon={FileText}
+             label="Assignments"
+             badge={pendingAssignments}
+             onClick={() => navigate("/students/assignments")}
+             highlighted
+           />
+           <OverviewCard
+             icon={TrendingUp}
+             label=" Grades"
+             onClick={() => navigate("/students/results")}
+           />
+           <OverviewCard
+             icon={CalendarDays}
+             label="Timetable"
+             onClick={() => navigate("/students/schedule")}
+           />
+          </div>
+            <button
+              type="button"
+              onClick={() => setAttendanceOpen(true)}
+              className="w-full cursor-pointer text-left transition hover:opacity-90"
+            >
               <div className="h-2 overflow-hidden rounded-full bg-gray-100">
                   <div className="h-full rounded-full bg-brand-600" style={{ width: "94%" }} />
                 </div>
                  <div className="flex justify-between mt-1">
                 <p className="font-semibold text-brand-700">Attendance</p> <p className="font-semibold text-brand-700">95%</p>
               </div>
-            </div>
+            </button>
         </section>
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
@@ -140,7 +157,7 @@ export function StudentDashboard() {
             </section>
 
             <section className="rounded-xl bg-white shadow-sm">
-              <SectionHeader icon={FileText} title="Assignments" action="View all" />
+              <SectionHeader onClick={()=> navigate("assignments")}  icon={FileText} title="Assignments" action="View all" />
 
               <div className="divide-y divide-gray-100">
                 {recentAssignments.length > 0 ? (
@@ -152,6 +169,7 @@ export function StudentDashboard() {
                       due={assignment.due}
                       points={assignment.points}
                       urgent={assignment.urgent}
+                      onClick={()=> navigate("/student/assignment")}
                     />
                   ))
                 ) : (
@@ -181,7 +199,7 @@ export function StudentDashboard() {
               </div>
             </section>
 
-            <section className="rounded-xl bg-white shadow-sm">
+            <section className="rounded-xl  hidden bg-white shadow-sm">
               <SectionHeader icon={CheckCircle2} title="Attendance" />
 
               <div className="px-5 pb-5">
@@ -220,6 +238,35 @@ export function StudentDashboard() {
           </aside>
         </div>
       </div>
+
+      <Modal
+        open={attendanceOpen}
+        onClose={() => setAttendanceOpen(false)}
+        title="Attendance"
+      >
+        <div>
+          <div className="mb-4 flex items-end justify-between">
+            <div>
+              <p className="text-3xl font-semibold text-gray-900">94%</p>
+              <p className="mt-1 text-xs text-gray-500">Overall attendance</p>
+            </div>
+
+            <span className="rounded-full bg-brand-50 px-2.5 py-1 text-xs font-medium text-brand-700">
+              Good standing
+            </span>
+          </div>
+
+          <div className="h-2 overflow-hidden rounded-full bg-gray-100">
+            <div className="h-full rounded-full bg-brand-600" style={{ width: "94%" }} />
+          </div>
+
+          <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+            <AttendanceStat label="Present" value="47" />
+            <AttendanceStat label="Absent" value="2" />
+            <AttendanceStat label="Late" value="1" />
+          </div>
+        </div>
+      </Modal>
     </main>
   );
 }
@@ -231,48 +278,42 @@ export function StudentDashboard() {
 interface OverviewCardProps {
   icon: React.ElementType;
   label: string;
-  value: string;
-  detail: string;
+  badge?: number;
   highlighted?: boolean;
+  onClick: () => void;
 }
 
 function OverviewCard({
   icon: Icon,
   label,
-  value,
-  detail,
+  badge,
   highlighted,
+  onClick,
 }: OverviewCardProps) {
   return (
-    <div
+    <button
+      type="button"
+      onClick={onClick}
       className={`rounded-xl flex flex-col items-center`}
     >
-      <div className="mb-2 flex items-center justify-between">
+      <div className="relative mb-2 flex items-center justify-between">
         <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-50">
           <Icon size={18} className="text-brand-600" />
         </div>
+
+        {badge !== undefined && badge > 0 && (
+          <span className="absolute -right-2 -top-1.5 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white ring-2 ring-white">
+            {badge}
+          </span>
+        )}
       </div>
 
       <div className="flex items-center gap-2">
-
-      <span className="text-4xs font-semibold text-gray-900 sm:text-2xl">
-          {value}
-        </span>
-         <p className="text-xs font-medium text-gray-500">
-        {label}
-      </p>
+        <p className="text-xs font-medium text-gray-500">
+          {label}
+        </p>
       </div>
-     
-
-      {/* <div className="mt-1 flex items-baseline gap-2">
-        
-
-        <span className="text-xs text-gray-400">
-          {detail}
-        </span>
-      </div> */}
-      
-    </div>
+    </button>
   );
 }
 
@@ -280,6 +321,7 @@ interface SectionHeaderProps {
   icon: React.ElementType;
   title: string;
   action?: string;
+  onClick?: ()=> void;
 }
 
 function SectionHeader({
@@ -370,6 +412,7 @@ interface AssignmentItemProps {
   due: string;
   points: string;
   urgent?: boolean;
+  onClick: ()=> void
 }
 
 function AssignmentItem({
@@ -379,8 +422,9 @@ function AssignmentItem({
   points,
   urgent,
 }: AssignmentItemProps) {
+  const navigate = useNavigate();
   return (
-    <button className="flex w-full items-center gap-4 px-5 py-4 text-left transition hover:bg-gray-50">
+    <button  onClick={()=> navigate("assignments")} className="flex w-full items-center gap-4 px-5 py-4 text-left transition hover:bg-gray-50">
       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50">
         <FileText size={17} className="text-brand-600" />
       </div>

@@ -35,6 +35,7 @@ export default function ScheduleGrid({
   onEditCell,
 }: ScheduleGridProps) {
   const { periods, entryMap } = useTimetable();
+  const now = useNow();
 
   const SCROLLBAR_HIDE_DELAY = 1500;
 
@@ -95,10 +96,13 @@ export default function ScheduleGrid({
     }
 
     if (entry) {
+      const live = isEntryLive(entry, periods, now);
+
       return (
         <ScheduleCard
           key={cellKey(day, period.id)}
           entry={entry}
+          live={live}
           onClick={() =>
             editing ? onEditCell(day, period) : onSelectEntry(entry)
           }

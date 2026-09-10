@@ -23,7 +23,7 @@ export function StudentProfilePage() {
 
         <ProfileHeader onSettings={handleSettings} />
 
-        <AcademicSnapshot />
+       
 
         <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {profileSections.map(({ key, title, description, icon: Icon }) => (

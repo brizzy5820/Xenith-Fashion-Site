@@ -27,7 +27,7 @@ export interface NavigationItem {
 export const navigation: Record<UserRole, NavigationItem[]> = {
   student: [
     {
-      name: "Dashboard",
+      name: "Home",
       href: "/students",
       icon: Home,
     },
@@ -43,7 +43,7 @@ export const navigation: Record<UserRole, NavigationItem[]> = {
       icon: FileText,
     },
      {
-      name: "Timetable & Schedules",
+      name: "Timetable",
       href: "/students/schedule",
       icon: CalendarDays,
     },

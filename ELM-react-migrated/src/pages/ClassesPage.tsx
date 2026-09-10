@@ -101,14 +101,11 @@ export default function ClassesPage() {
         <section>
           <div className="mb-3 flex items-center justify-between">
             <div>
-              <h2 className="text-sm font-semibold text-gray-900">
-                Your Classes
-              </h2>
 
-              <p className="mt-0.5 text-xs text-gray-500">
+              <h2 className="text-3sm font-semibold text-gray-900">
                 {filteredClasses.length}{" "}
-                {filteredClasses.length === 1 ? "class" : "classes"}
-              </p>
+                {filteredClasses.length === 1 ? "class" : "enrolled classes"}
+              </h2>
             </div>
           </div>
 

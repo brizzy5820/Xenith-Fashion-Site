@@ -4,6 +4,7 @@ import { Bell } from "lucide-react";
 import { getNotificationsHref, getProfileHref, UserRole } from "@/config/navigation";
 import { useHideOnScroll } from "@/hooks/useHideOnScroll";
 import { studentProfile } from "@/features/students/profile/data/studentProfile";
+import { MobileSearch } from "@/components/search/GlobalSearch";
 
 interface MobileTopBarProps {
   role: UserRole;
@@ -38,6 +39,8 @@ export function MobileTopBar({ role }: MobileTopBarProps) {
       </Link>
 
       <div className="flex items-center gap-1.5">
+        <MobileSearch role={role} />
+
         <Link
           to={notificationsHref}
           aria-label="Notifications"

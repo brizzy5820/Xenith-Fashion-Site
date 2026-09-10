@@ -48,7 +48,7 @@ export function AssignmentTabs({
   ];
 
   return (
-    <div className="border-b border-gray-200 bg-white rounded-xl shadow-sm">
+    <div className="border-b border-gray-200 bg-white rounded-xl ">
       <nav
         className="isolate -mb-px flex items-center gap-2 overflow-x-auto p-2"
         aria-label="Assignment filters"
